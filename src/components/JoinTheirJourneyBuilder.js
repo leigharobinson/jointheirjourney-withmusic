@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import NavBar from "../components/nav/Nav";
 import ApplicationViews from "../components/ApplicationViews";
-import SongManager from "../modules/SongManager";
 
 export const JoinTheirJourney = () => {
   const [year, setYear] = useState({

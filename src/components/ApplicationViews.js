@@ -1,7 +1,7 @@
 import { Route } from "react-router-dom";
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { Patient } from "../components/patient/Patient";
+import { PatientList } from "./patient/PatientList";
 import Register from "../components/auth/Register";
 import Login from "../components/auth/Login";
 import { Home } from "../components/home/Home";
@@ -33,7 +33,7 @@ const ApplicationViews = () => {
         exact
         path="/patients"
         render={(props) => {
-          return <Patient {...props} />;
+          return <PatientList {...props} />;
         }}
       />
       {/* <Route
