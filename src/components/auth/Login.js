@@ -1,23 +1,31 @@
 import React, { useRef } from "react";
+import { withRouter } from "react-router-dom";
 import UseSimpleAuth from "../../hooks/ui/useSimpleAuth";
 
-export default function Login(props) {
+const Login = (props) => {
   const username = useRef();
   const password = useRef();
   const { login } = UseSimpleAuth();
 
+  // Simplistic handler for login submit
   const handleLogin = (e) => {
     e.preventDefault();
-    props.setIsCurrentUser(false);
 
+    /*
+            For now, just store the username and password that
+            the customer enters into local storage.
+        */
     const credentials = {
       username: username.current.value,
       password: password.current.value,
     };
 
+    console.log(credentials);
+
     login(credentials).then(() => {
-      props.setIsCurrentUser(true);
-      //   props.history.push("/");
+      props.history.push({
+        pathname: "/",
+      });
     });
   };
 
@@ -26,7 +34,7 @@ export default function Login(props) {
       <form className="form--login" onSubmit={handleLogin}>
         <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
         <fieldset>
-          <label htmlFor="inputEmail"> Username </label>
+          <label htmlFor="inputUsername"> Username </label>
           <input
             ref={username}
             type="username"
@@ -53,4 +61,6 @@ export default function Login(props) {
       </form>
     </main>
   );
-}
+};
+
+export default withRouter(Login);

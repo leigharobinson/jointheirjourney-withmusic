@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-const UseSimpleAuth = () => {
-  const [loggedIn, setIsLoggedIn] = useState(false);
+const useSimpleAuth = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const isAuthenticated = () =>
-    loggedIn || localStorage.getItem("musicmemoryapi_token") !== null;
+    isLoggedIn || localStorage.getItem("musicmemoryapi_token") !== null;
 
   const register = (userInfo) => {
-    return fetch("http://127.0.0.1:8000/caretakers", {
+    return fetch("http://localhost:8000/register/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +25,7 @@ const UseSimpleAuth = () => {
   };
 
   const login = (credentials) => {
-    return fetch("http://127.0.0.1:8000/login/", {
+    return fetch("http://localhost:8000/login/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,4 +50,4 @@ const UseSimpleAuth = () => {
   return { isAuthenticated, logout, login, register };
 };
 
-export default UseSimpleAuth;
+export default useSimpleAuth;

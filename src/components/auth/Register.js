@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
+import { withRouter } from "react-router-dom";
 import UseSimpleAuth from "../../hooks/ui/useSimpleAuth";
 // import { JoinTheirJourney } from "./components/JoinTheirJourneyBuilder";
 
-export const Register = (props) => {
+const Register = (props) => {
   const email = useRef();
   const userName = useRef();
   const lastName = useRef();
@@ -14,7 +15,7 @@ export const Register = (props) => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    props.setIsCurrentUser(false);
+
     const newUser = {
       username: userName.current.value,
       first_name: firstName.current.value,
@@ -25,7 +26,6 @@ export const Register = (props) => {
     };
 
     register(newUser).then(() => {
-      props.setIsCurrentUser(true);
       props.history.push("/");
     });
   };
@@ -118,3 +118,5 @@ export const Register = (props) => {
     </form>
   );
 };
+
+export default withRouter(Register);
