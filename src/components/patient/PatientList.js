@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { PatientCard } from "./PatientCard";
-import UseSimpleAuth from "../../hooks/ui/useSimpleAuth";
+import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
+import { Link } from "react-router-dom";
 
 const PatientList = (props) => {
   const [patients, setPatients] = useState([]);
-  const { isAuthenticated } = UseSimpleAuth();
+  const { isAuthenticated } = useSimpleAuth();
 
   const getPatients = () => {
     if (isAuthenticated()) {
@@ -25,11 +26,18 @@ const PatientList = (props) => {
   useEffect(getPatients, []);
 
   return (
-    <div className="patientList">
-      {patients.map((patient) => (
-        <PatientCard key={`patient-${patient.id}`} patient={patient} />
-      ))}
-    </div>
+    <>
+      <div className="patientList">
+        {patients.map((patient) => (
+          <PatientCard key={`patient-${patient.id}`} patient={patient} />
+        ))}
+      </div>
+      <div>
+        <Link to={`/patients/form`}>
+          <button>Create New patient</button>
+        </Link>
+      </div>
+    </>
   );
 };
 

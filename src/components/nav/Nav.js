@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import UseSimpleAuth from "../../hooks/ui/useSimpleAuth";
+import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import "./Nav.css";
 
 const NavBar = (props) => {
-  const { isAuthenticated, logout } = UseSimpleAuth();
+  const { isAuthenticated, logout } = useSimpleAuth();
 
   return (
     <nav>

@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route } from "react-router-dom";
 import NavBar from "../components/nav/Nav";
 import ApplicationViews from "../components/ApplicationViews";
+import "./JoinTheirJourneyBuilder.css";
 
 export const JoinTheirJourney = () => {
-  const [year, setYear] = useState({
-    year: "",
-  });
   return (
     <React.Fragment>
       <img

@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
 import { withRouter } from "react-router-dom";
-import UseSimpleAuth from "../../hooks/ui/useSimpleAuth";
+import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 
 const Login = (props) => {
   const username = useRef();
   const password = useRef();
-  const { login } = UseSimpleAuth();
+  const { login } = useSimpleAuth();
 
   // Simplistic handler for login submit
   const handleLogin = (e) => {

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { withRouter } from "react-router-dom";
-import UseSimpleAuth from "../../hooks/ui/useSimpleAuth";
+import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 // import { JoinTheirJourney } from "./components/JoinTheirJourneyBuilder";
 
 const Register = (props) => {
@@ -11,7 +11,7 @@ const Register = (props) => {
   const firstName = useRef();
   const title = useRef();
   const verifyPassword = useRef();
-  const { register } = UseSimpleAuth();
+  const { register } = useSimpleAuth();
 
   const handleRegister = (e) => {
     e.preventDefault();
