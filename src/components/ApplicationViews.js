@@ -1,6 +1,7 @@
-import { Route } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import React from "react";
 import { withRouter } from "react-router-dom";
+import useSimpleAuth from "../hooks/ui/useSimpleAuth";
 import PatientList from "./patient/PatientList";
 import Register from "../components/auth/Register";
 import Login from "../components/auth/Login";
@@ -10,93 +11,92 @@ import PatientForm from "../components/patient/PatientForm";
 import PatientEdit from "../components/patient/PatientEdit";
 
 const ApplicationViews = () => {
+  const { isAuthenticated } = useSimpleAuth();
+
   return (
     <React.Fragment>
-      <Route
-        path="/"
-        render={(props) => {
-          return <Home />;
-        }}
-      />
+      <Switch>
+        <Route
+          exact
+          path="/register"
+          render={(props) => {
+            return <Register {...props} />;
+          }}
+        />
 
-      <Route
-        path="/register"
-        render={(props) => {
-          return <Register {...props} />;
-        }}
-      />
+        <Route
+          exact
+          path="/login"
+          render={(props) => {
+            return <Login {...props} />;
+          }}
+        />
 
-      <Route
-        path="/login"
-        render={(props) => {
-          return <Login {...props} />;
-        }}
-      />
-
-      <Route
-        exact
-        path="/patients"
-        render={(props) => {
-          return <PatientList {...props} />;
-        }}
-      />
-      <Route
-        exact
-        path="/patients/:patientId(\d+)"
-        render={(props) => {
-          return (
-            <PatientDetail
-              patientId={props.match.params.patientId}
-              {...props}
-            />
-          );
-        }}
-      />
-      <Route
-        path="/patients/form"
-        render={(props) => {
-          return <PatientForm {...props} />;
-        }}
-      />
-      <Route
-        exact
-        path="/patients/:patientId(\d+)/edit"
-        render={(props) => {
-          return (
-            <PatientEdit patientId={props.match.params.patientId} {...props} />
-          );
-        }}
-      />
-      {/* <Route
-        exact
-        path="/products/:productId(\d+)"
-        render={(props) => {
-          return (
-            <ProductDetail
-              productId={props.match.params.productId}
-              {...props}
-            />
-          );
-        }}
-      />
-      <Route
-        path="/sell-product"
-        render={(props) => {
-          return <ProductForm {...props} />;
-        }}
-      />
-      <Route
-        path="/payments/form"
-        render={(props) => {
-          return <PaymentTypeForm {...props} />;
-        }}
-      />
-      <Route
-        path="/products/cart"
-        render={(props) => {
-          return <Cart />;
-        }}
-      /> */}
+        <Route
+          exact
+          path="/"
+          render={(props) => {
+            if (isAuthenticated()) {
+              return <Home />;
+            } else {
+              return <Redirect to="Login" />;
+            }
+          }}
+        />
+        <Route
+          exact
+          path="/patients"
+          render={(props) => {
+            if (isAuthenticated()) {
+              return <PatientList {...props} />;
+            } else {
+              return <Redirect to="Login" />;
+            }
+          }}
+        />
+        <Route
+          exact
+          path="/patients/:patientId(\d+)"
+          render={(props) => {
+            if (isAuthenticated()) {
+              return (
+                <PatientDetail
+                  patientId={props.match.params.patientId}
+                  {...props}
+                />
+              );
+            } else {
+              return <Redirect to="Login" />;
+            }
+          }}
+        />
+        <Route
+          path="/patients/form"
+          render={(props) => {
+            if (isAuthenticated()) {
+              return <PatientForm {...props} />;
+            } else {
+              return <Redirect to="Login" />;
+            }
+          }}
+        />
+        <Route
+          exact
+          path="/patients/:patientId(\d+)/edit"
+          render={(props) => {
+            if (isAuthenticated()) {
+              return (
+                <PatientEdit
+                  patientId={props.match.params.patientId}
+                  {...props}
+                />
+              );
+            } else {
+              return <Redirect to="Login" />;
+            }
+          }}
+        />
+      </Switch>
     </React.Fragment>
   );
 };

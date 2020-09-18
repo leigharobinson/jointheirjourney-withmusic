@@ -6,14 +6,11 @@ export const PatientCard = (props) => {
     <>
       <div className="patientCard">
         <div className="patientCard-content">
-          <div>
-            {props.patient.first_name} {props.patient.last_name}
-          </div>
           <button>
-            <Link to={`/patients/${props.patient.id}`}>Details</Link>
-          </button>
-          <button>
-            <Link to={`/patients/${props.patient.id}/edit`}>Edit</Link>
+            <Link to={`/patients/${props.patient.id}`}>
+              {" "}
+              {props.patient.first_name} {props.patient.last_name}
+            </Link>
           </button>
         </div>
       </div>

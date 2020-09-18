@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
+import { Link } from "react-router-dom";
 
 const PatientDetail = (props) => {
   const [patient, setPatient] = useState({
@@ -37,15 +38,20 @@ const PatientDetail = (props) => {
 
   return (
     <>
-      <p>Caretaker: {patient.caretaker.user.first_name}</p>
-      <p>
-        Patient: {patient.first_name} {patient.last_name}
-      </p>
-      <p>Diagnosis: {patient.diagnosis}</p>
-      <p>Year of Birth: {patient.year_of_birth}</p>
+      <div id="Patient">
+        <button>
+          <Link to={`/patients/${patient.id}/edit`}>Edit</Link>
+        </button>
+        <p>Caretaker: {patient.caretaker.user.first_name}</p>
+        <p>
+          Patient: {patient.first_name} {patient.last_name}
+        </p>
+        <p>Diagnosis: {patient.diagnosis}</p>
+        <p>Year of Birth: {patient.year_of_birth}</p>
 
-      <button>View Song Responses</button>
-      <button>View Generated Songs list</button>
+        <button>View Song Responses</button>
+        <button>View Generated Songs list</button>
+      </div>
     </>
   );
 };

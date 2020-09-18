@@ -1,11 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { withRouter } from "react-router-dom";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 
 const Login = (props) => {
   const username = useRef();
   const password = useRef();
-  const { login } = useSimpleAuth();
+  const { isAuthenticated, login } = useSimpleAuth();
 
   // Simplistic handler for login submit
   const handleLogin = (e) => {
@@ -19,13 +19,15 @@ const Login = (props) => {
       username: username.current.value,
       password: password.current.value,
     };
-
-    console.log(credentials);
-
+    // console.log(credentials);
+    // Wanted to write an function that would stop patient view from being rendered if
+    // a Caretaker hasn't
     login(credentials).then(() => {
-      props.history.push({
-        pathname: "/",
-      });
+      if (isAuthenticated !== null) {
+        props.history.push({
+          pathname: "/patients",
+        });
+      }
     });
   };
 
@@ -59,6 +61,17 @@ const Login = (props) => {
           <button type="submit">Sign in</button>
         </fieldset>
       </form>
+      <div className="buttonDiv2">
+        <button
+          className="createNewUserBtn"
+          type="button"
+          onClick={() => {
+            props.history.push("/register");
+          }}
+        >
+          Register
+        </button>
+      </div>
     </main>
   );
 };
