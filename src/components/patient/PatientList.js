@@ -3,6 +3,7 @@ import { PatientCard } from "./PatientCard";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import { Home } from "../home/Home";
 import { Link } from "react-router-dom";
+import ApiManager from "../../modules/ApiManager";
 import "./Patient.css";
 
 const PatientList = (props) => {
@@ -12,17 +13,7 @@ const PatientList = (props) => {
 
   const getPatients = () => {
     if (isAuthenticated()) {
-      fetch("http://localhost:8000/patients", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          Authorization: `Token ${localStorage.getItem(
-            "musicmemoryapi_token"
-          )}`,
-        },
-      })
-        .then((res) => res.json())
-        .then(setPatients);
+      ApiManager.get("patients").then(setPatients);
     }
   };
 

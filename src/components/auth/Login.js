@@ -1,6 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { withRouter } from "react-router-dom";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
+import { SongList } from "../../components/song/SongList";
 
 const Login = (props) => {
   const username = useRef();
@@ -71,6 +72,9 @@ const Login = (props) => {
         >
           Register
         </button>
+      </div>
+      <div>
+        <SongList />
       </div>
     </main>
   );

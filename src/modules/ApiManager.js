@@ -41,4 +41,12 @@ export default {
       },
     }).then((response) => response.json());
   },
+  getByYear(year) {
+    return fetch(`${remoteURL}/songs?birth_year=${year}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    }).then((response) => response.json());
+  },
 };
