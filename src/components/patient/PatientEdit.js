@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { Route, useEffect, useState } from "react";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
-import PatientManager from "../../modules/PatientManager";
+import ApiManager from "../../modules/ApiManager";
 
 const PatientEdit = (props) => {
   const [patient, setPatient] = useState({
@@ -24,7 +24,7 @@ const PatientEdit = (props) => {
 
     //   This is an edit so we need the id
     const editedPatient = {
-      id: props.match.params.patientId,
+      id: props.patientId,
       caretakerId: patient.caretaker_id,
       first_name: patient.first_name,
       last_name: patient.last_name,
@@ -32,30 +32,19 @@ const PatientEdit = (props) => {
       year_of_birth: patient.year_of_birth,
     };
 
-    PatientManager.update(editedPatient).then(() =>
-      props.history.push("/patients")
+    ApiManager.update("patients", editedPatient).then(() =>
+      props.history.push("/patients/" + `${editedPatient.id}`)
     );
   };
 
   const getPatient = () => {
     if (isAuthenticated()) {
-      fetch(`http://localhost:8000/patients/${props.patientId}`, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          Authorization: `Token ${localStorage.getItem(
-            "musicmemoryapi_token"
-          )}`,
-        },
-      })
-        .then((response) => response.json())
-        // product from API
-        .then((patient) => {
-          //   console.table(patient);
-          //   console.table(patient.caretaker);
-          // THe .product_type has to match what's coming from API
-          setPatient(patient);
-        });
+      ApiManager.getById("patients", props.patientId).then((patient) => {
+        //   console.table(patient);
+        //   console.table(patient.caretaker);
+        // THe .product_type has to match what's coming from API
+        setPatient(patient);
+      });
     }
   };
   useEffect(getPatient, []);

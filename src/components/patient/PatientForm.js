@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
+import ApiManager from "../../modules/ApiManager";
 
 const PatientForm = (props) => {
   const [patient, setPatient] = useState({
@@ -15,20 +16,10 @@ const PatientForm = (props) => {
 
   const getCaretaker = () => {
     if (isAuthenticated()) {
-      fetch("http://localhost:8000/caretakers", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          Authorization: `Token ${localStorage.getItem(
-            "musicmemoryapi_token"
-          )}`,
-        },
-      })
-        .then((response) => response.json())
-        .then((caretaker) => {
-          setCaretaker(caretaker);
-          console.table(caretaker);
-        });
+      ApiManager.get("caretakers").then((caretaker) => {
+        setCaretaker(caretaker);
+        console.table(caretaker);
+      });
     }
   };
 
@@ -63,22 +54,10 @@ const PatientForm = (props) => {
         caretaker_id: parseInt(caretaker.id),
       };
 
-      fetch("http://localhost:8000/patients", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Token ${localStorage.getItem(
-            "musicmemoryapi_token"
-          )}`,
-        },
-        body: JSON.stringify(thePatient),
-      })
-        .then((response) => response.json())
-        .then(() => {
-          console.log("Added");
-          props.history.push("/patients");
-        });
+      ApiManager.post("patients", thePatient).then(() => {
+        console.log("Added");
+        props.history.push("/patients");
+      });
     }
   };
 

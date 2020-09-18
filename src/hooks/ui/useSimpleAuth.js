@@ -38,6 +38,9 @@ const useSimpleAuth = () => {
         if ("valid" in res && res.valid && "token" in res) {
           localStorage.setItem("musicmemoryapi_token", res.token);
           setIsLoggedIn(true);
+        } else {
+          alert("No Match found, please register");
+          setIsLoggedIn(false);
         }
       });
   };
