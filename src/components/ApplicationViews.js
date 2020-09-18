@@ -9,6 +9,7 @@ import { Home } from "../components/home/Home";
 import PatientDetail from "../components/patient/PatientDetail";
 import PatientForm from "../components/patient/PatientForm";
 import PatientEdit from "../components/patient/PatientEdit";
+import { SongList } from "../components/song/SongList";
 
 const ApplicationViews = () => {
   const { isAuthenticated } = useSimpleAuth();
@@ -29,6 +30,13 @@ const ApplicationViews = () => {
           path="/login"
           render={(props) => {
             return <Login {...props} />;
+          }}
+        />
+        <Route
+          exact
+          path="/songs?birth_year=:year"
+          render={(props) => {
+            return <SongList {...props} />;
           }}
         />
 
