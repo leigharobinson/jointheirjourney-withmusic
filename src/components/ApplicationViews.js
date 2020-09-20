@@ -10,6 +10,8 @@ import PatientDetail from "../components/patient/PatientDetail";
 import PatientForm from "../components/patient/PatientForm";
 import PatientEdit from "../components/patient/PatientEdit";
 import { SongList } from "../components/song/SongList";
+import SongListPatient from "../components/song/SongListPatient";
+import CaretakerList from "../components/caretaker/CaretakerList";
 
 const ApplicationViews = () => {
   const { isAuthenticated } = useSimpleAuth();
@@ -39,6 +41,17 @@ const ApplicationViews = () => {
             return <SongList {...props} />;
           }}
         />
+        <Route
+          exact
+          path="/songs"
+          render={(props) => {
+            if (isAuthenticated()) {
+              return <SongListPatient {...props} />;
+            } else {
+              return <Redirect to="Login" />;
+            }
+          }}
+        />
 
         <Route
           exact
@@ -56,7 +69,28 @@ const ApplicationViews = () => {
           path="/patients"
           render={(props) => {
             if (isAuthenticated()) {
-              return <PatientList {...props} />;
+              return (
+                <PatientList
+                  patientId={props.match.params.patientId}
+                  {...props}
+                />
+              );
+            } else {
+              return <Redirect to="Login" />;
+            }
+          }}
+        />
+        <Route
+          exact
+          path="/caretakers"
+          render={(props) => {
+            if (isAuthenticated()) {
+              return (
+                <CaretakerList
+                  patientId={props.match.params.patientId}
+                  {...props}
+                />
+              );
             } else {
               return <Redirect to="Login" />;
             }

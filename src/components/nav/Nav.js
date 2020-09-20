@@ -18,6 +18,9 @@ const NavBar = (props) => {
               <Link to="/patients">Patients</Link>
             </li>
             <li>
+              <Link to="/caretakers">Profile</Link>
+            </li>
+            <li>
               <Link to="/songs">Songs</Link>
             </li>
 

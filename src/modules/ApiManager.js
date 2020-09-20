@@ -49,4 +49,12 @@ export default {
       },
     }).then((response) => response.json());
   },
+  getSongsById(id) {
+    return fetch(`${remoteURL}/songs?patient_id=${id}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    }).then((response) => response.json());
+  },
 };

@@ -3,6 +3,8 @@ import "../song/SongCard.css";
 // import { Link } from "react-router-dom";
 
 export const SongCard = (props) => {
+  console.log(props.patientId);
+
   return (
     <>
       <div className="SongCard">
