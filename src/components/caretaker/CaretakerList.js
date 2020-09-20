@@ -7,16 +7,17 @@ import ApiManager from "../../modules/ApiManager";
 import { CaretakerDetail } from "../caretaker/CaretakerDetail";
 
 const CaretakerList = () => {
+  const { isAuthenticated } = useSimpleAuth();
   const [caretaker, setCaretaker] = useState([
     {
-      caretaker: {
-        user: {
-          first_name: "",
-        },
+      title: "",
+      user: {
+        first_name: "",
+        last_name: "",
+        username: "",
       },
     },
   ]);
-  const { isAuthenticated } = useSimpleAuth();
 
   // Undefined
 
@@ -28,8 +29,28 @@ const CaretakerList = () => {
     }
     console.table(caretaker);
   };
-  useEffect(getCaretaker, []);
+  useEffect(() => {
+    getCaretaker();
+  }, []);
 
+  let caretakerObj = caretaker.map((caretaker) => {
+    return {
+      id: caretaker.id,
+      title: caretaker.title,
+      first_name: caretaker.user.first_name,
+      last_name: caretaker.user.last_name,
+      user_name: caretaker.user.username,
+    };
+  });
+
+  const first_name = caretakerObj[0].first_name;
+  const last_name = caretakerObj[0].last_name;
+  const username = caretakerObj[0].user_name;
+
+  console.log(caretakerObj[0].id);
+  console.log(caretakerObj[0].title);
+  console.log(caretakerObj[0].first_name);
+  console.log(caretakerObj[0].last_name);
   return (
     <>
       <div>
@@ -39,14 +60,19 @@ const CaretakerList = () => {
         <div>
           <div>
             <p> Caretaker List </p>
+            <h3>{username}</h3>
           </div>
+          <h1>
+            Name: {first_name} {last_name}
+          </h1>
           <div>
-            {caretaker.map((caretaker) => (
+            {/* <CaretakerDetail caretakerExpiriment={caretakerExpiriment} /> */}
+            {/* {caretaker.map((caretaker) => (
               <CaretakerDetail
                 key={`caretaker-${caretaker.id}`}
                 caretaker={caretaker}
               />
-            ))}
+            ))} */}
           </div>
 
           {/* <div>

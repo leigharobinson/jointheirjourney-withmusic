@@ -1,38 +1,40 @@
 import React, { useEffect, useState } from "react";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import ApiManager from "../../modules/ApiManager";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const CaretakerDetail = (props) => {
-  // let caretakerId = props.caretaker.id;
-  const [caretaker, setCaretaker] = useState({
+  const { isAuthenticated } = useSimpleAuth();
+  let caretakerId = props.caretakerExpiriment[0].id;
+  console.log(caretakerId);
+  const [caretakerObj, setCaretakerObj] = useState({
     user: {
       first_name: "",
     },
   });
-  const { isAuthenticated } = useSimpleAuth();
   // console.log(props.patientId);
 
-  const getCaretaker = () => {
+  const getCaretakerObj = () => {
     if (isAuthenticated()) {
       // passing('patients', patient.id) also works
-      ApiManager.getById("caretakers", props.caretaker.id).then(setCaretaker);
-      // product from API
-      // .then((caretaker) => {
-      //   // console.table(patient);
-      //   // console.table(patient.caretaker);
-      //   // THe .product_type has to match what's coming from API
-      //   setCaretaker(caretaker);
+      ApiManager.getById("caretakers", caretakerId)
+        // product from API
+        .then((caretakerObj) => {
+          // console.table(patient);
+          // console.table(patient.caretaker);
+          // THe .product_type has to match what's coming from API
+          setCaretakerObj(caretakerObj);
+        });
     }
   };
-  useEffect(getCaretaker, []);
+  useEffect(getCaretakerObj, []);
 
-  console.log(caretaker);
+  // console.log(caretaker);
 
   return (
     <>
       <p>Caretaker's Details</p>
-      <p>Name: {caretaker.user.first_name}</p>
+      <p>Name: {caretakerObj.user.first_name}</p>
     </>
   );
 };
