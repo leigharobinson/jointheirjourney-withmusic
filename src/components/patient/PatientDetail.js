@@ -3,6 +3,7 @@ import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import ApiManager from "../../modules/ApiManager";
 import { Link } from "react-router-dom";
 import SongListPatient from "../song/SongListPatient";
+import "./Patient.css";
 // import { SongListPatient } from "../song/SongYOBList";
 
 const PatientDetail = (props) => {
@@ -36,22 +37,23 @@ const PatientDetail = (props) => {
   return (
     <>
       <div id="Patient">
-        <button>
-          <Link to={`/patients/${patient.id}/edit`}>Edit</Link>
-        </button>
-        {/* <button>
+        <div className="PatientCard">
+          <button>
+            <Link to={`/patients/${patient.id}/edit`}>Edit</Link>
+          </button>
+          {/* <button>
           <Link to={`/songs?patient_id=${props.patientId}`}>
             Song Suggestions
           </Link>
         </button> */}
 
-        <p>Caretaker: {patient.caretaker.user.first_name}</p>
-        <p>
-          Patient: {patient.first_name} {patient.last_name}
-        </p>
-        <p>Diagnosis: {patient.diagnosis}</p>
-        <p>Year of Birth: {patient.year_of_birth}</p>
-
+          <p>Caretaker: {patient.caretaker.user.first_name}</p>
+          <p>
+            Patient: {patient.first_name} {patient.last_name}
+          </p>
+          <p>Diagnosis: {patient.diagnosis}</p>
+          <p>Year of Birth: {patient.year_of_birth}</p>
+        </div>
         <SongListPatient {...props} />
       </div>
     </>

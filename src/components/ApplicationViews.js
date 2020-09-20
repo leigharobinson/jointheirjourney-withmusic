@@ -10,9 +10,8 @@ import PatientDetail from "../components/patient/PatientDetail";
 import PatientForm from "../components/patient/PatientForm";
 import PatientEdit from "../components/patient/PatientEdit";
 import { SongList } from "../components/song/SongList";
-import SongListPatient from "../components/song/SongListPatient";
+// import SongListPatient from "../components/song/SongListPatient";
 import CaretakerList from "../components/caretaker/CaretakerList";
-// import CaretakerDetail from "../components/caretaker/CaretakerDetail";
 
 const ApplicationViews = () => {
   const { isAuthenticated } = useSimpleAuth();
@@ -42,7 +41,7 @@ const ApplicationViews = () => {
             return <SongList {...props} />;
           }}
         />
-        <Route
+        {/* <Route
           exact
           path="/songs"
           render={(props) => {
@@ -52,7 +51,7 @@ const ApplicationViews = () => {
               return <Redirect to="Login" />;
             }
           }}
-        />
+        /> */}
 
         <Route
           exact
@@ -139,22 +138,6 @@ const ApplicationViews = () => {
             }
           }}
         />
-        {/* <Route
-          exact
-          path="/caretakers/:caretakerId(\d+)"
-          render={(props) => {
-            if (isAuthenticated()) {
-              return (
-                <CaretakerDetail
-                  caretakerId={props.match.params.caretakerId}
-                  {...props}
-                />
-              );
-            } else {
-              return <Redirect to="Login" />;
-            }
-          }}
-        /> */}
       </Switch>
     </React.Fragment>
   );

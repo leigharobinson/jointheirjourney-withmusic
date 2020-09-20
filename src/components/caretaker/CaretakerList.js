@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-// import { CaretakerCard } from "./CaretakerCard";
+
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import { Home } from "../home/Home";
-// import { Link } from "react-router-dom";
+
 import ApiManager from "../../modules/ApiManager";
-import { CaretakerDetail } from "../caretaker/CaretakerDetail";
 
 const CaretakerList = () => {
   const { isAuthenticated } = useSimpleAuth();
@@ -27,7 +26,7 @@ const CaretakerList = () => {
         //product from API
         .then(setCaretaker);
     }
-    console.table(caretaker);
+    // console.table(caretaker);
   };
   useEffect(() => {
     getCaretaker();
@@ -46,11 +45,12 @@ const CaretakerList = () => {
   const first_name = caretakerObj[0].first_name;
   const last_name = caretakerObj[0].last_name;
   const username = caretakerObj[0].user_name;
+  const title = caretaker[0].title;
 
-  console.log(caretakerObj[0].id);
-  console.log(caretakerObj[0].title);
-  console.log(caretakerObj[0].first_name);
-  console.log(caretakerObj[0].last_name);
+  //   console.log(caretakerObj[0].id);
+  //   console.log(caretakerObj[0].title);
+  //   console.log(caretakerObj[0].first_name);
+  //   console.log(caretakerObj[0].last_name);
   return (
     <>
       <div>
@@ -60,8 +60,9 @@ const CaretakerList = () => {
         <div>
           <div>
             <p> Caretaker List </p>
-            <h3>{username}</h3>
+            <h1>{username}</h1>
           </div>
+          <h1>Title: {title}</h1>
           <h1>
             Name: {first_name} {last_name}
           </h1>
