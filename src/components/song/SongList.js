@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
 import ApiManager from "../../modules/ApiManager";
 import { SongCard } from "../song/SongCard";
+import { propTypes } from "react-bootstrap/esm/Image";
 
-export const SongList = () => {
+export const SongList = (props) => {
   const year = useRef();
   const [songs, setSongs] = useState([]);
 
@@ -51,9 +52,23 @@ export const SongList = () => {
             <div className="alignRight">
               <button type="submit">Submit</button>
             </div>
+            <button onClick={() => setSongs([])} type="reset">
+              Clear Search
+            </button>
           </fieldset>
         </form>
         <div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Song</th>
+                <th scope="col">Artist</th>
+                <th scope="col">Year</th>
+              </tr>
+            </thead>
+          </table>
+
           {songs.map((song) => (
             <SongCard key={`song-${song.id}`} song={song} />
           ))}

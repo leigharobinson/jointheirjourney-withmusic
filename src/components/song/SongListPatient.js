@@ -43,6 +43,16 @@ const SongListPatient = (props) => {
       <div>
         <h1>{patient.first_name}'s Song Suggestions</h1>
         <div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Song</th>
+                <th scope="col">Artist</th>
+                <th scope="col">Year</th>
+              </tr>
+            </thead>
+          </table>
           {songs.map((song) => (
             <SongCard key={`song-${song.id}`} song={song} />
           ))}

@@ -3,3 +3,7 @@
   height: auto;
   border: black solid 2px;
 }
+
+.hiddenRow {
+  padding: 0 !important;
+}
