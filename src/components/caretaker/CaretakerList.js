@@ -42,6 +42,7 @@ const CaretakerList = () => {
     };
   });
 
+  //   Needed to create these varibles to hold on to value to stop undefined
   const first_name = caretakerObj[0].first_name;
   const last_name = caretakerObj[0].last_name;
   const username = caretakerObj[0].user_name;
