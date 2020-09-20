@@ -17,7 +17,7 @@ const PatientDetail = (props) => {
   });
   const { isAuthenticated } = useSimpleAuth();
 
-  // console.log(props.patientId);
+  console.log(props.patientId);
 
   const getPatient = () => {
     if (isAuthenticated()) {
@@ -34,6 +34,10 @@ const PatientDetail = (props) => {
   };
   useEffect(getPatient, []);
 
+  const deleteObj = (type, id) => {
+    ApiManager.destroy(type, id).then(() => props.history.push("/patients"));
+  };
+
   return (
     <>
       <div id="Patient">
@@ -41,11 +45,12 @@ const PatientDetail = (props) => {
           <button>
             <Link to={`/patients/${patient.id}/edit`}>Edit</Link>
           </button>
-          {/* <button>
-          <Link to={`/songs?patient_id=${props.patientId}`}>
-            Song Suggestions
-          </Link>
-        </button> */}
+          <button
+            type="button"
+            onClick={() => deleteObj("patients", props.patientId)}
+          >
+            DELETE
+          </button>
 
           <p>Caretaker: {patient.caretaker.user.first_name}</p>
           <p>
