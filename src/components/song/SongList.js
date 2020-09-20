@@ -28,15 +28,15 @@ export const SongList = () => {
     ApiManager.getByYear(selectedYear.year).then(setSongs);
   };
 
-  console.table(songs);
+  // console.table(songs);
 
   return (
     <>
       <div>
         <form className="select_year" onSubmit={handleSongSelection}>
           <h1>
-            Select Birth Year to Find Top 5 songs from the ages of 10-20 years
-            old
+            Select Birth Year to Find Top Billboard Hits from 10 to 20 years of
+            age.
           </h1>
           <fieldset>
             <select ref={year}>
