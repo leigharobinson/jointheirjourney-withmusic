@@ -12,6 +12,7 @@ import PatientEdit from "../components/patient/PatientEdit";
 import { SongList } from "../components/song/SongList";
 import SongListPatient from "../components/song/SongListPatient";
 import CaretakerList from "../components/caretaker/CaretakerList";
+// import CaretakerDetail from "../components/caretaker/CaretakerDetail";
 
 const ApplicationViews = () => {
   const { isAuthenticated } = useSimpleAuth();
@@ -82,22 +83,6 @@ const ApplicationViews = () => {
         />
         <Route
           exact
-          path="/caretakers"
-          render={(props) => {
-            if (isAuthenticated()) {
-              return (
-                <CaretakerList
-                  patientId={props.match.params.patientId}
-                  {...props}
-                />
-              );
-            } else {
-              return <Redirect to="Login" />;
-            }
-          }}
-        />
-        <Route
-          exact
           path="/patients/:patientId(\d+)"
           render={(props) => {
             if (isAuthenticated()) {
@@ -138,6 +123,38 @@ const ApplicationViews = () => {
             }
           }}
         />
+        <Route
+          exact
+          path="/caretakers"
+          render={(props) => {
+            if (isAuthenticated()) {
+              return (
+                <CaretakerList
+                  patientId={props.match.params.patientId}
+                  {...props}
+                />
+              );
+            } else {
+              return <Redirect to="Login" />;
+            }
+          }}
+        />
+        {/* <Route
+          exact
+          path="/caretakers/:caretakerId(\d+)"
+          render={(props) => {
+            if (isAuthenticated()) {
+              return (
+                <CaretakerDetail
+                  caretakerId={props.match.params.caretakerId}
+                  {...props}
+                />
+              );
+            } else {
+              return <Redirect to="Login" />;
+            }
+          }}
+        /> */}
       </Switch>
     </React.Fragment>
   );

@@ -4,14 +4,18 @@ import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import { Home } from "../home/Home";
 // import { Link } from "react-router-dom";
 import ApiManager from "../../modules/ApiManager";
+import { CaretakerDetail } from "../caretaker/CaretakerDetail";
 
 const CaretakerList = () => {
-  const [caretaker, setCaretaker] = useState({
-    title: "",
-    user: {
-      first_name: "",
+  const [caretaker, setCaretaker] = useState([
+    {
+      caretaker: {
+        user: {
+          first_name: "",
+        },
+      },
     },
-  });
+  ]);
   const { isAuthenticated } = useSimpleAuth();
 
   // Undefined
@@ -20,13 +24,9 @@ const CaretakerList = () => {
     if (isAuthenticated()) {
       ApiManager.get("caretakers")
         //product from API
-        .then((caretaker) => {
-          //   console.table(caretaker);
-          //   console.log(caretaker[0].title);
-          setCaretaker(caretaker);
-          console.log(caretaker);
-        });
+        .then(setCaretaker);
     }
+    console.table(caretaker);
   };
   useEffect(getCaretaker, []);
 
@@ -38,8 +38,25 @@ const CaretakerList = () => {
       <div id="Caretaker">
         <div>
           <div>
-            <p> Hello WOrld {caretaker.title}</p>
+            <p> Caretaker List </p>
           </div>
+          <div>
+            {caretaker.map((caretaker) => (
+              <CaretakerDetail
+                key={`caretaker-${caretaker.id}`}
+                caretaker={caretaker}
+              />
+            ))}
+          </div>
+
+          {/* <div>
+            {caretaker.map((caretaker) => (
+              <CaretakerCard
+                key={`caretaker-${caretaker.id}`}
+                caretaker={caretaker}
+              />
+            ))}
+          </div> */}
         </div>
       </div>
     </>
