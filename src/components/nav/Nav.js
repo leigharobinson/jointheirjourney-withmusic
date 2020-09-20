@@ -12,14 +12,14 @@ const NavBar = (props) => {
         {isAuthenticated() ? (
           <>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/caretakers">Profile</Link>
             </li>
             <li>
               <Link to="/patients">Patients</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/songs">Songs</Link>
-            </li>
+            </li> */}
 
             <li className="nav-item">
               <button

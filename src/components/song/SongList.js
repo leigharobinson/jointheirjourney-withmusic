@@ -23,10 +23,12 @@ export const SongList = () => {
       year: year.current.value,
     };
 
-    console.table(selectedYear);
+    // console.table(selectedYear);
 
     ApiManager.getByYear(selectedYear.year).then(setSongs);
   };
+
+  console.table(songs);
 
   return (
     <>

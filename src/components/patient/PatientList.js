@@ -9,6 +9,9 @@ import "./Patient.css";
 const PatientList = (props) => {
   const [patients, setPatients] = useState([]);
 
+  // Undefined
+  // console.log(props.patientId);
+
   const { isAuthenticated } = useSimpleAuth();
 
   const getPatients = () => {

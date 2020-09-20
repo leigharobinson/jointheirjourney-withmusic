@@ -36,6 +36,7 @@ export default {
     return fetch(`${remoteURL}/${param}`, {
       method: "GET",
       headers: {
+        "Content-Type": "application/json",
         Accept: "application/json",
         Authorization: `Token ${localStorage.getItem("musicmemoryapi_token")}`,
       },
@@ -43,6 +44,14 @@ export default {
   },
   getByYear(year) {
     return fetch(`${remoteURL}/songs?birth_year=${year}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    }).then((response) => response.json());
+  },
+  getSongsById(id) {
+    return fetch(`${remoteURL}/songs?patient_id=${id}`, {
       method: "GET",
       headers: {
         Accept: "application/json",

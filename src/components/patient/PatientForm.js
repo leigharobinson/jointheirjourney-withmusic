@@ -23,9 +23,7 @@ const PatientForm = (props) => {
     }
   };
 
-  useEffect(() => {
-    getCaretaker();
-  }, []);
+  useEffect(getCaretaker, []);
 
   const handleFieldChange = (evt) => {
     const stateToChange = { ...patient };
