@@ -4,7 +4,8 @@ import ApiManager from "../../modules/ApiManager";
 import { Link } from "react-router-dom";
 import SongListPatient from "../song/SongListPatient";
 import "./Patient.css";
-// import { SongListPatient } from "../song/SongYOBList";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 const PatientDetail = (props) => {
   const [patient, setPatient] = useState({
@@ -34,6 +35,27 @@ const PatientDetail = (props) => {
   };
   useEffect(getPatient, []);
 
+  const deleteObj = (type, id) => {
+    ApiManager.destroy(type, id).then(() => props.history.push("/patients"));
+  };
+
+  const submit = () => {
+    confirmAlert({
+      title: "Confirm to Delete",
+      message: "Are you sure you want to delete this patient?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => deleteObj("patients", props.patientId),
+        },
+        {
+          label: "No",
+          // onClick: () => alert("Click No"),
+        },
+      ],
+    });
+  };
+
   return (
     <>
       <div id="Patient">
@@ -41,11 +63,9 @@ const PatientDetail = (props) => {
           <button>
             <Link to={`/patients/${patient.id}/edit`}>Edit</Link>
           </button>
-          {/* <button>
-          <Link to={`/songs?patient_id=${props.patientId}`}>
-            Song Suggestions
-          </Link>
-        </button> */}
+          <div className="container">
+            <button onClick={submit}>Delete</button>
+          </div>
 
           <p>Caretaker: {patient.caretaker.user.first_name}</p>
           <p>

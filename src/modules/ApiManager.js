@@ -32,6 +32,14 @@ export default {
       body: JSON.stringify(object),
     }).then((response) => response.json());
   },
+  destroy(param, id) {
+    return fetch(`${remoteURL}/${param}/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("musicmemoryapi_token")}`,
+      },
+    });
+  },
   get(param) {
     return fetch(`${remoteURL}/${param}`, {
       method: "GET",
