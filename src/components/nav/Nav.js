@@ -1,27 +1,34 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import "./Nav.css";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+} from "reactstrap";
 
 const NavBar = (props) => {
-  const { isAuthenticated, logout } = useSimpleAuth();
+  const [collapsed, setCollapsed] = useState(true);
+  const { logout } = useSimpleAuth();
+  const toggleNavbar = () => setCollapsed(!collapsed);
 
   return (
-    <nav>
-      <ul>
-        {isAuthenticated() ? (
-          <>
-            <li>
-              <Link to="/caretakers">Profile</Link>
-            </li>
-            <li>
-              <Link to="/patients">Patients</Link>
-            </li>
-            {/* <li>
-              <Link to="/songs">Songs</Link>
-            </li> */}
-
-            <li className="nav-item">
+    <div>
+      <Navbar color="faded" light>
+        <NavbarBrand href="/patients" className="mr-auto">
+          Patients
+        </NavbarBrand>
+        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+        <Collapse isOpen={!collapsed} navbar>
+          <Nav navbar>
+            <NavItem>
+              <NavLink href="/caretakers">Profile</NavLink>
+            </NavItem>
+            <NavItem>
               <button
                 className="nav-link fakeLink"
                 onClick={() => {
@@ -33,19 +40,14 @@ const NavBar = (props) => {
               >
                 Logout
               </button>
-            </li>
-          </>
-        ) : (
-          <>
-            {/* <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                Login
-              </Link>
-            </li> */}
-          </>
-        )}
-      </ul>
-    </nav>
+              {/* <NavLink href="https://github.com/reactstrap/reactstrap">
+                GitHub
+              </NavLink> */}
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </div>
   );
 };
 

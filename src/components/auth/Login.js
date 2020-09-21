@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { withRouter } from "react-router-dom";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import { SongList } from "../../components/song/SongList";
+import { Button } from "reactstrap";
 
 const Login = (props) => {
   const username = useRef();
@@ -59,11 +60,11 @@ const Login = (props) => {
           />
         </fieldset>
         <fieldset>
-          <button type="submit">Sign in</button>
+          <Button type="submit">Sign in</Button>
         </fieldset>
       </form>
       <div className="buttonDiv2">
-        <button
+        <Button
           className="createNewUserBtn"
           type="button"
           onClick={() => {
@@ -71,7 +72,7 @@ const Login = (props) => {
           }}
         >
           Register
-        </button>
+        </Button>
       </div>
       <div>
         <SongList />

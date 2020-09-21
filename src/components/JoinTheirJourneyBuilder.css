@@ -1,9 +1,9 @@
 /* Import the google web fonts you want to use */
-@import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+/* @import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One"); */
 
 /*Typography
 --------------------------------------------------------------*/
-body,
+/* body,
 button,
 input,
 select,
@@ -41,4 +41,4 @@ address {
 img {
   width: 100px;
   height: auto;
-}
+} */
