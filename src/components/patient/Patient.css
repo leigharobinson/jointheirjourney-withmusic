@@ -1,7 +1,41 @@
-#Patients {
-  border: blue solid 5px;
+.PatientCard {
+  border: palevioletred solid 2px;
+  padding: 1em;
+  margin: 1em;
 }
 
-.PatientCard {
-  border: red solid 5px;
+.PatientList {
+  border: blueviolet solid 5px;
+  padding: 1em;
+  margin: 1em;
+}
+
+/* .PatientBtn {
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+} */
+
+.PatientEdit {
+  border: green solid 5px;
+  padding: 1em;
+  margin: 1em;
+}
+
+.formgrid input {
+  padding: 0.5em;
+  margin: 0.5em;
+}
+.form_style {
+  border: blueviolet solid 5px;
+  padding: 1em;
+  margin: 1em;
+}
+
+.Patient_btn {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.Patient_btn Button {
+  /* border: black solid 5px; */
+  margin: 0.5em;
 }

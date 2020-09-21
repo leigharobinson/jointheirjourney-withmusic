@@ -6,6 +6,9 @@ import SongListPatient from "../song/SongListPatient";
 import "./Patient.css";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import SongResponseList from "../songresponse/SongResponseList";
+import { Home } from "../home/Home";
+import { Button } from "reactstrap";
 
 const PatientDetail = (props) => {
   const [patient, setPatient] = useState({
@@ -18,12 +21,13 @@ const PatientDetail = (props) => {
   });
   const { isAuthenticated } = useSimpleAuth();
 
-  // console.log(props.patientId);
+  const patientId = props.patientId;
+  // console.log(patientId);
 
   const getPatient = () => {
     if (isAuthenticated()) {
       // passing('patients', patient.id) also works
-      ApiManager.getById("patients", props.patientId)
+      ApiManager.getById("patients", patientId)
         // product from API
         .then((patient) => {
           // console.table(patient);
@@ -59,21 +63,24 @@ const PatientDetail = (props) => {
   return (
     <>
       <div id="Patient">
+        <Home />
         <div className="PatientCard">
-          <button>
-            <Link to={`/patients/${patient.id}/edit`}>Edit</Link>
-          </button>
-          <div className="container">
-            <button onClick={submit}>Delete</button>
-          </div>
-
-          <p>Caretaker: {patient.caretaker.user.first_name}</p>
+          {/* <p>Caretaker: {patient.caretaker.user.first_name}</p> */}
           <p>
             Patient: {patient.first_name} {patient.last_name}
           </p>
           <p>Diagnosis: {patient.diagnosis}</p>
           <p>Year of Birth: {patient.year_of_birth}</p>
+          <div className="Patient_btn">
+            <Button>
+              <Link to={`/patients/${patient.id}/edit`}>Edit</Link>
+            </Button>
+            <Button color="danger" onClick={submit}>
+              Delete
+            </Button>
+          </div>
         </div>
+        <SongResponseList patientId={patientId} {...props} />
         <SongListPatient {...props} />
       </div>
     </>

@@ -1,3 +1,5 @@
 #Home {
-  border: red solid 5px;
+  border: purple solid 5px;
+  padding: 1em;
+  margin: 1em;
 }

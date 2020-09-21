@@ -3,3 +3,9 @@
   height: auto;
   border: black solid 2px;
 }
+
+.SongList {
+  border: orange solid 5px;
+  padding: 1em;
+  margin: 1em;
+}

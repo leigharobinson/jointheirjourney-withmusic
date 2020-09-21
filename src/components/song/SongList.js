@@ -1,8 +1,10 @@
 import React, { useRef, useState } from "react";
 import ApiManager from "../../modules/ApiManager";
 import { SongCard } from "../song/SongCard";
+import { Button } from "reactstrap";
+import "./SongCard.css";
 
-export const SongList = () => {
+export const SongList = (props) => {
   const year = useRef();
   const [songs, setSongs] = useState([]);
 
@@ -28,16 +30,16 @@ export const SongList = () => {
     ApiManager.getByYear(selectedYear.year).then(setSongs);
   };
 
-  console.table(songs);
+  // console.table(songs);
 
   return (
     <>
-      <div>
+      <div className="SongList">
         <form className="select_year" onSubmit={handleSongSelection}>
-          <h1>
-            Select Birth Year to Find Top 5 songs from the ages of 10-20 years
-            old
-          </h1>
+          <h4>
+            Select Birth Year to Find Top Billboard Hits from 10 to 20 years of
+            age.
+          </h4>
           <fieldset>
             <select ref={year}>
               <option> Birth Year</option>
@@ -49,11 +51,25 @@ export const SongList = () => {
             </select>
 
             <div className="alignRight">
-              <button type="submit">Submit</button>
+              <Button type="submit">Submit</Button>
             </div>
+            <Button onClick={() => setSongs([])} type="reset">
+              Clear Search
+            </Button>
           </fieldset>
         </form>
         <div>
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Song</th>
+                <th scope="col">Artist</th>
+                <th scope="col">Year</th>
+              </tr>
+            </thead>
+          </table>
+
           {songs.map((song) => (
             <SongCard key={`song-${song.id}`} song={song} />
           ))}
