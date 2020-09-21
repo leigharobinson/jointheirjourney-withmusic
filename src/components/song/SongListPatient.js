@@ -4,6 +4,7 @@ import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import ApiManager from "../../modules/ApiManager";
 import { SongCard } from "../song/SongCard";
 import { Collapse, Button, CardBody, Card } from "reactstrap";
+import "./SongCard.css";
 
 const SongListPatient = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +44,7 @@ const SongListPatient = (props) => {
 
   return (
     <>
-      <div>
+      <div className="SongPatientList">
         <div>
           <Button
             color="primary"

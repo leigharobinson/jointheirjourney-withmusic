@@ -80,7 +80,11 @@ const PatientDetail = (props) => {
             </Button>
           </div>
         </div>
-        <SongResponseList patientId={patientId} {...props} />
+        <SongResponseList
+          patientName={patient.first_name}
+          patientId={patientId}
+          {...props}
+        />
         <SongListPatient {...props} />
       </div>
     </>

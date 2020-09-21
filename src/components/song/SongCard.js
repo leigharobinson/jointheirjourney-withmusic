@@ -17,14 +17,6 @@ export const SongCard = (props) => {
           </tr>
         </tbody>
       </table>
-      {/* <div className="SongCard">
-        <h1>
-          Song: {props.song.song_title} BY: {props.song.artist}
-        </h1>
-        <p>
-          Rank: {props.song.position} year: {props.song.year}
-        </p>
-      </div> */}
     </>
   );
 };
