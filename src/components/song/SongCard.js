@@ -7,7 +7,7 @@ export const SongCard = (props) => {
 
   return (
     <>
-      <table class="table table-striped">
+      <table className="table table-striped">
         <tbody>
           <tr>
             <th scope="row">{props.song.position}</th>

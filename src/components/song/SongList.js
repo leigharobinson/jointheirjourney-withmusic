@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
 import ApiManager from "../../modules/ApiManager";
 import { SongCard } from "../song/SongCard";
-import { propTypes } from "react-bootstrap/esm/Image";
+import { Button } from "reactstrap";
+import "./SongCard.css";
 
 export const SongList = (props) => {
   const year = useRef();
@@ -33,12 +34,12 @@ export const SongList = (props) => {
 
   return (
     <>
-      <div>
+      <div className="SongList">
         <form className="select_year" onSubmit={handleSongSelection}>
-          <h1>
+          <h4>
             Select Birth Year to Find Top Billboard Hits from 10 to 20 years of
             age.
-          </h1>
+          </h4>
           <fieldset>
             <select ref={year}>
               <option> Birth Year</option>
@@ -50,15 +51,15 @@ export const SongList = (props) => {
             </select>
 
             <div className="alignRight">
-              <button type="submit">Submit</button>
+              <Button type="submit">Submit</Button>
             </div>
-            <button onClick={() => setSongs([])} type="reset">
+            <Button onClick={() => setSongs([])} type="reset">
               Clear Search
-            </button>
+            </Button>
           </fieldset>
         </form>
         <div>
-          <table class="table table-striped">
+          <table className="table table-striped">
             <thead>
               <tr>
                 <th scope="col">Rank</th>

@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import { SongList } from "../../components/song/SongList";
 import { Button } from "reactstrap";
+import "./Login.css";
 
 const Login = (props) => {
   const username = useRef();
@@ -35,44 +36,46 @@ const Login = (props) => {
 
   return (
     <main style={{ textAlign: "center" }}>
-      <form className="form--login" onSubmit={handleLogin}>
-        <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <fieldset>
-          <label htmlFor="inputUsername"> Username </label>
-          <input
-            ref={username}
-            type="username"
-            className="form-control"
-            placeholder="Username"
-            required
-            autoFocus
-          />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="inputPassword"> Password </label>
-          <input
-            ref={password}
-            type="password"
-            id="password"
-            className="form-control"
-            placeholder="Password"
-            required
-          />
-        </fieldset>
-        <fieldset>
-          <Button type="submit">Sign in</Button>
-        </fieldset>
-      </form>
-      <div className="buttonDiv2">
-        <Button
-          className="createNewUserBtn"
-          type="button"
-          onClick={() => {
-            props.history.push("/register");
-          }}
-        >
-          Register
-        </Button>
+      <div className="loginCard">
+        <form className="form--login" onSubmit={handleLogin}>
+          <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+          <fieldset>
+            <label htmlFor="inputUsername"> Username </label>
+            <input
+              ref={username}
+              type="username"
+              className="form-control"
+              placeholder="Username"
+              required
+              autoFocus
+            />
+          </fieldset>
+          <fieldset>
+            <label htmlFor="inputPassword"> Password </label>
+            <input
+              ref={password}
+              type="password"
+              id="password"
+              className="form-control"
+              placeholder="Password"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <Button type="submit">Sign in</Button>
+          </fieldset>
+        </form>
+        <div className="buttonDiv2">
+          <Button
+            className="createNewUserBtn"
+            type="button"
+            onClick={() => {
+              props.history.push("/register");
+            }}
+          >
+            Register
+          </Button>
+        </div>
       </div>
       <div>
         <SongList />

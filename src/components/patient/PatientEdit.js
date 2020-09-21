@@ -1,6 +1,7 @@
 import React, { Route, useEffect, useState } from "react";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import ApiManager from "../../modules/ApiManager";
+import { Home } from "../home/Home";
 
 const PatientEdit = (props) => {
   const [patient, setPatient] = useState({
@@ -51,58 +52,63 @@ const PatientEdit = (props) => {
 
   return (
     <>
-      <h4 className="colorLetters">Edit Patient Info</h4>
-      <form>
-        <fieldset className="Patient_Form">
-          <div className="formgrid">
-            <input
-              type="text"
-              required
-              onChange={handleFieldChange}
-              id="first_name"
-              defaultValue={patient.first_name}
-            />
-            <label htmlFor="first_name">First Name:</label>
+      <div>
+        <Home />
+      </div>
+      <div className="PatientEdit">
+        <h3 className="colorLetters">Edit Patient's Info:</h3>
+        <form>
+          <fieldset className="Patient_Form">
+            <div className="formgrid">
+              <input
+                type="text"
+                required
+                onChange={handleFieldChange}
+                id="first_name"
+                defaultValue={patient.first_name}
+              />
+              <label htmlFor="first_name">First Name:</label>
 
-            <input
-              type="text"
-              required
-              onChange={handleFieldChange}
-              id="last_name"
-              defaultValue={patient.last_name}
-            />
-            <label htmlFor="last_name">Last Name:</label>
+              <input
+                type="text"
+                required
+                onChange={handleFieldChange}
+                id="last_name"
+                defaultValue={patient.last_name}
+              />
+              <label htmlFor="last_name">Last Name:</label>
 
-            <input
-              type=""
-              required
-              onChange={handleFieldChange}
-              id="diagnosis"
-              defaultValue={patient.diagnosis}
-            />
-            <label htmlFor="diagnosis">Diagnosis:</label>
+              <input
+                type=""
+                required
+                onChange={handleFieldChange}
+                id="diagnosis"
+                defaultValue={patient.diagnosis}
+              />
+              <label htmlFor="diagnosis">Diagnosis:</label>
 
-            <input
-              type="text"
-              required
-              onChange={handleFieldChange}
-              id="year_of_birth"
-              defaultValue={patient.year_of_birth}
-            />
-            <label htmlFor="year_of_birth">Year of Birth:</label>
-          </div>
-          <div className="alignRight">
-            <button
-              id="EditPatientBtn"
-              type="button"
-              onClick={updateExistingPatient}
-              className="btn btn-primary"
-            >
-              Submit
-            </button>
-          </div>
-        </fieldset>
-      </form>
+              <input
+                type="text"
+                required
+                onChange={handleFieldChange}
+                id="year_of_birth"
+                defaultValue={patient.year_of_birth}
+              />
+              <label htmlFor="year_of_birth">Year of Birth:</label>
+            </div>
+            <div className="alignRight">
+              <button
+                id="EditPatientBtn"
+                type="button"
+                onClick={updateExistingPatient}
+                className="btn btn-primary"
+              >
+                Submit
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
     </>
   );
 };

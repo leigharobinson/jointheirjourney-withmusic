@@ -5,6 +5,7 @@ import { Home } from "../home/Home";
 import { Link } from "react-router-dom";
 import ApiManager from "../../modules/ApiManager";
 import "./Patient.css";
+import { Button } from "reactstrap";
 
 const PatientList = (props) => {
   const [patients, setPatients] = useState([]);
@@ -27,7 +28,8 @@ const PatientList = (props) => {
       <div>
         <Home />
       </div>
-      <div id="Patients">
+      <div className="PatientList">
+        <h3>Patients:</h3>
         <div className="patientList">
           {patients.map((patient) => (
             <PatientCard key={`patient-${patient.id}`} patient={patient} />
@@ -35,7 +37,7 @@ const PatientList = (props) => {
         </div>
         <div>
           <Link to={`/patients/form`}>
-            <button>Create New patient</button>
+            <Button color="success">Create New patient</Button>{" "}
           </Link>
         </div>
       </div>

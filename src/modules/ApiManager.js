@@ -66,4 +66,13 @@ export default {
       },
     }).then((response) => response.json());
   },
+  getSongResponsesById(id) {
+    return fetch(`${remoteURL}/songresponses?patient_id=${id}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Token ${localStorage.getItem("musicmemoryapi_token")}`,
+      },
+    }).then((response) => response.json());
+  },
 };
