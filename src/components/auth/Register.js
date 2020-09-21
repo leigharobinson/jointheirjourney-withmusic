@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import { withRouter } from "react-router-dom";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
-// import { JoinTheirJourney } from "./components/JoinTheirJourneyBuilder";
+import { Button } from "reactstrap";
+import "./Login.css";
 
 const Register = (props) => {
   const email = useRef();
@@ -26,22 +27,22 @@ const Register = (props) => {
     };
 
     register(newUser).then(() => {
-      props.history.push("/");
+      props.history.push("/patients");
     });
   };
 
   return (
     <>
       <div className="buttonDiv2">
-        <button
+        <Button
           className="createNewUserBtn"
           type="button"
           onClick={() => {
             props.history.push("/login");
           }}
         >
-          Login
-        </button>
+          Back to Login
+        </Button>
       </div>
       <form className="form--login" onSubmit={handleRegister}>
         <h1 className="h3 mb-3 font-weight-normal">Register</h1>
@@ -125,7 +126,7 @@ const Register = (props) => {
           />
         </fieldset>
         <fieldset>
-          <button type="submit">Register</button>
+          <Button type="submit">Register</Button>
         </fieldset>
       </form>
     </>

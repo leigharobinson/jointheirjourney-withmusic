@@ -1,4 +1,4 @@
-import React, { Route, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import ApiManager from "../../modules/ApiManager";
 import { Home } from "../home/Home";

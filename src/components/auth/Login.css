@@ -1,5 +1,11 @@
 .loginCard {
-  border: yellow solid 5px;
+  border: purple solid 5px;
   padding: 1em;
   margin: 1em;
+}
+.buttonDiv2 {
+  padding: 0.5em;
+  margin: 0.5em;
+  display: flex;
+  justify-content: space-around;
 }
