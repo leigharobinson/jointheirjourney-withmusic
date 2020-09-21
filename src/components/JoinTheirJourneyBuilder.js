@@ -8,7 +8,9 @@ import ApplicationViews from "../components/ApplicationViews";
 export const JoinTheirJourney = () => {
   return (
     <React.Fragment>
-      <Route render={(props) => <NavBar {...props} />} />
+      <div>
+        <Route render={(props) => <NavBar {...props} />} />
+      </div>
       <ApplicationViews />
     </React.Fragment>
   );
