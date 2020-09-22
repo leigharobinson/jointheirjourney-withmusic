@@ -56,11 +56,13 @@ export const SongCard = (props) => {
       ) : (
         <>
           <div className="SongCard">
-            <h3>Billboard Rank: {props.song.position}</h3>
+            <h6>{props.song.year}</h6>
+            <h6>Billboard Rank: {props.song.position}</h6>
             {/* <h3>id: {props.song.id}</h3> */}
-            <h4>Song: "{props.song.song_title}"</h4>
-            <h4>Artist: {props.song.artist}</h4>
-            <h4>Year: {props.song.year}</h4>
+            <h6>
+              Song:<strong> "{props.song.song_title}"</strong>
+            </h6>
+            <h6>Artist: {props.song.artist}</h6>
           </div>
         </>
       )}

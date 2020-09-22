@@ -39,3 +39,17 @@
   /* border: black solid 5px; */
   margin: 0.5em;
 }
+
+.CreateNew_btn {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 0.5em;
+  margin: 0 0.5em;
+}
+
+.Title_position {
+  display: flex;
+  justify-content: start;
+  padding: 0.5em;
+  margin: 0.5em;
+}
