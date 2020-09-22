@@ -138,7 +138,7 @@ const ApplicationViews = () => {
             if (isAuthenticated()) {
               return (
                 <SongResponseForm
-                  songId={props.match.params.songId}
+                  patientId={props.match.params.patientId}
                   {...props}
                 />
               );

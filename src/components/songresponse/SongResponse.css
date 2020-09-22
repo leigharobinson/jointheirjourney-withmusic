@@ -10,11 +10,6 @@
   margin: 1em;
 }
 
-.fade {
-  opacity: unset !important;
-  transition: opacity 0.15s linear;
-}
-
 .Parent {
   display: flex;
   justify-content: space-between;

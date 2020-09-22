@@ -1,25 +1,32 @@
 import React, { useState, useEffect } from "react";
-// import { withRouter } from "react-router-dom";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import ApiManager from "../../modules/ApiManager";
 import { SongCard } from "../song/SongCard";
-import { Collapse, Button, CardBody, Card } from "reactstrap";
+
 import "./SongCard.css";
+import Accordion from "react-bootstrap/Accordion";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 const SongListPatient = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isAuthenticated } = useSimpleAuth();
   const [songs, setSongs] = useState([]);
-  const [patient, setPatient] = useState({
-    first_name: "",
-    caretaker: {
-      user: {
-        first_name: "",
+  const [patient, setPatient] = useState([
+    {
+      first_name: "",
+      caretaker: {
+        id: "",
+        user: {
+          first_name: "",
+        },
       },
     },
-  });
-  const { isAuthenticated } = useSimpleAuth();
+  ]);
 
-  const toggle = () => setIsOpen(!isOpen);
+  // used inheritance to get pass down caretaker id
+  const caretakerId = props.caretakerId;
+  // console.log(caretakerId);
+  // got this value
   // console.log(props.patientId);
 
   const getPatientSongs = () => {
@@ -29,7 +36,8 @@ const SongListPatient = (props) => {
         // product from API
         .then((patient) => {
           // console.table(patient);
-          // console.table(patient.caretaker);
+          // let i
+          // console.table(patient[i].caretaker.user.id);
           // THe .product_type has to match what's coming from API
           setPatient(patient);
         });
@@ -45,36 +53,27 @@ const SongListPatient = (props) => {
   return (
     <>
       <div className="SongPatientList">
-        <div>
-          <Button
-            color="primary"
-            onClick={toggle}
-            style={{ marginBottom: "1rem" }}
-          >
-            <h3>Song Suggestions for {patient.first_name}</h3>
-          </Button>
-          <Collapse isOpen={isOpen}>
-            <Card>
-              <CardBody>
-                <div>
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">Rank</th>
-                        <th scope="col">Song</th>
-                        <th scope="col">Artist</th>
-                        <th scope="col">Year</th>
-                      </tr>
-                    </thead>
-                  </table>
-                  {songs.map((song) => (
-                    <SongCard key={`song-${song.id}`} song={song} />
-                  ))}
-                </div>
-              </CardBody>
-            </Card>
-          </Collapse>
-        </div>
+        <Accordion>
+          <Card>
+            <Card.Header>
+              <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                <h3>Song Suggestions for {patient.first_name}</h3>
+              </Accordion.Toggle>
+            </Card.Header>
+            <Accordion.Collapse eventKey="0">
+              <Card.Body>
+                {songs.map((song) => (
+                  <SongCard
+                    key={`song-${song.id}`}
+                    song={song}
+                    patientId={props.patientId}
+                    caretakerId={caretakerId}
+                  />
+                ))}
+              </Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        </Accordion>
       </div>
     </>
   );

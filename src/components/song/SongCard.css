@@ -9,9 +9,18 @@
   padding: 1em;
   margin: 1em;
 }
+.SongList Button {
+  padding: 0.5em;
+  margin: 0.5em;
+}
 
 .SongPatientList {
   border: orange solid 5px;
   padding: 1em;
+  margin: 1em;
+}
+
+.select_year select {
+  padding: 0.5em;
   margin: 1em;
 }

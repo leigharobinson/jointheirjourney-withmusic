@@ -19,11 +19,10 @@ const PatientForm = (props) => {
     if (isAuthenticated()) {
       ApiManager.get("caretakers").then((caretaker) => {
         setCaretaker(caretaker);
-        console.table(caretaker);
       });
     }
   };
-
+  // console.table(caretaker);
   useEffect(getCaretaker, []);
 
   const handleFieldChange = (evt) => {
@@ -54,7 +53,7 @@ const PatientForm = (props) => {
       };
 
       ApiManager.post("patients", thePatient).then(() => {
-        console.log("Added");
+        // console.log("Added");
         props.history.push("/patients");
       });
     }

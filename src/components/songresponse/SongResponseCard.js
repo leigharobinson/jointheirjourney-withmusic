@@ -26,9 +26,6 @@ export const SongResponseCard = (props) => {
   const vocalization_score = parseInt(props.vocalization_id);
   const liked_song_score = parseInt(props.liked_song_id);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const totalScore =
     eye_contact_score +
     talkativeness_score +
@@ -37,10 +34,12 @@ export const SongResponseCard = (props) => {
     vocalization_score +
     liked_song_score;
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       <div className="songResponseCard">
-        {/* <p>Song Response Id: {props.songResponse.id}</p> */}
         <h4>
           <strong>Score: {totalScore}/36</strong>
         </h4>
@@ -52,8 +51,8 @@ export const SongResponseCard = (props) => {
           <Button variant="primary" onClick={handleShow}>
             Details
           </Button>
-
           <Modal show={show} onHide={handleClose}>
+            <div id="modal_space"></div>
             <Modal.Header closeButton>
               <Modal.Title>
                 <h1>Song Response Details</h1>

@@ -10,27 +10,39 @@ export const SongResponseDetail = (props) => {
           <strong>"{props.songTitle}"</strong> by: {props.artist}
           <hr />
           <div className="Parent">
-            <p>Eye Contact: {props.eye_contact}</p>
+            <p>
+              <strong>Eye Contact:</strong> {props.eye_contact}
+            </p>
             <p>{props.eye_contact_score}/5 </p>
           </div>
           <div className="Parent">
-            <p>Talkativeness: {props.talkativeness}</p>
+            <p>
+              <strong>Talkativeness:</strong> {props.talkativeness}
+            </p>
             <p> {props.talkativeness_score}/5</p>
           </div>
           <div className="Parent">
-            <p>Mood: {props.mood}</p>
+            <p>
+              <strong>Mood:</strong> {props.mood}
+            </p>
             <p>{props.mood_score}/5</p>
           </div>
           <div className="Parent">
-            <p>Movement: {props.movement}</p>
+            <p>
+              <strong>Movement:</strong> {props.movement}
+            </p>
             <p>{props.movement_score}/5</p>
           </div>
           <div className="Parent">
-            <p>Vocalization: {props.vocalization}</p>
+            <p>
+              <strong>Vocalization:</strong> {props.vocalization}
+            </p>
             <p>{props.vocalization_score}/5</p>
           </div>
           <div className="Parent">
-            <p>Liked Song: {props.liked_song}</p>
+            <p>
+              <strong>Liked Song:</strong> {props.liked_song}
+            </p>
             <p>{props.liked_song_score}/5</p>
           </div>
           <div className="Parent">
