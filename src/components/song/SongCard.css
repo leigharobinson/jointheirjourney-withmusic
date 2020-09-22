@@ -1,7 +1,7 @@
 .SongCard {
-  width: 200px;
-  height: auto;
-  border: black solid 2px;
+  border: palevioletred solid 5px;
+  padding: 1em;
+  margin: 1em;
 }
 
 .SongList {

@@ -83,6 +83,9 @@ export const SongResponseCard = (props) => {
               <Button variant="secondary" onClick={handleClose}>
                 Close
               </Button>
+              <Button variant="secondary" onClick={handleClose}>
+                Edit
+              </Button>
               <Button variant="primary" onClick={handleClose}>
                 Save Changes
               </Button>

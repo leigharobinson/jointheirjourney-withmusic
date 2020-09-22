@@ -8,7 +8,7 @@ import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import SongResponseList from "../songresponse/SongResponseList";
 import { Home } from "../home/Home";
-import { Button } from "reactstrap";
+import Button from "react-bootstrap/Button";
 
 const PatientDetail = (props) => {
   const [patient, setPatient] = useState({
@@ -65,7 +65,6 @@ const PatientDetail = (props) => {
       <div id="Patient">
         <Home />
         <div className="PatientCard">
-          {/* <p>Caretaker: {patient.caretaker.user.first_name}</p> */}
           <p>
             Patient: {patient.first_name} {patient.last_name}
           </p>

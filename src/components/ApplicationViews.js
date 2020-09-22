@@ -10,7 +10,8 @@ import PatientDetail from "../components/patient/PatientDetail";
 import PatientForm from "../components/patient/PatientForm";
 import PatientEdit from "../components/patient/PatientEdit";
 import { SongList } from "../components/song/SongList";
-// import SongListPatient from "../components/song/SongListPatient";
+import SongResponseForm from "../components/songresponse/SongResponseForm";
+
 import CaretakerList from "../components/caretaker/CaretakerList";
 
 const ApplicationViews = () => {
@@ -41,18 +42,7 @@ const ApplicationViews = () => {
             return <SongList {...props} />;
           }}
         />
-        {/* <Route
-          exact
-          path="/songs"
-          render={(props) => {
-            if (isAuthenticated()) {
-              return <SongListPatient {...props} />;
-            } else {
-              return <Redirect to="Login" />;
-            }
-          }}
-        /> */}
-
+        {/* This is Where Home Starts  */}
         <Route
           exact
           path="/"
@@ -64,6 +54,24 @@ const ApplicationViews = () => {
             }
           }}
         />
+        {/* This is Where Caretaker Starts  */}
+        <Route
+          exact
+          path="/caretakers"
+          render={(props) => {
+            if (isAuthenticated()) {
+              return (
+                <CaretakerList
+                  patientId={props.match.params.patientId}
+                  {...props}
+                />
+              );
+            } else {
+              return <Redirect to="Login" />;
+            }
+          }}
+        />
+        {/* This is Where Patient Starts  */}
         <Route
           exact
           path="/patients"
@@ -122,14 +130,15 @@ const ApplicationViews = () => {
             }
           }}
         />
+        {/* This is Where Patient Starts  */}
         <Route
           exact
-          path="/caretakers"
+          path="/songresponses/form"
           render={(props) => {
             if (isAuthenticated()) {
               return (
-                <CaretakerList
-                  patientId={props.match.params.patientId}
+                <SongResponseForm
+                  songId={props.match.params.songId}
                   {...props}
                 />
               );
