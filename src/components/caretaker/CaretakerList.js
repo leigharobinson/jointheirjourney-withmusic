@@ -34,12 +34,12 @@ const CaretakerList = () => {
       <div className="CaretakerCard">
         <div>
           <div>
-            <h3> Username: {caretaker.user.username}</h3>
+            <h3>
+              Name: {caretaker.user.first_name} {caretaker.user.last_name}{" "}
+            </h3>
           </div>
           <h5>Title: {caretaker.title}</h5>
-          <h5>
-            Name: {caretaker.user.first_name} {caretaker.user.last_name}
-          </h5>
+          <h5>Username: {caretaker.user.username}</h5>
         </div>
       </div>
     </>

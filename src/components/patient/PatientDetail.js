@@ -8,21 +8,23 @@ import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import SongResponseList from "../songresponse/SongResponseList";
 import { Home } from "../home/Home";
-import { Button } from "reactstrap";
+import Button from "react-bootstrap/Button";
 
 const PatientDetail = (props) => {
   const [patient, setPatient] = useState({
     first_name: "",
     caretaker: {
+      id: "",
       user: {
         first_name: "",
       },
     },
   });
   const { isAuthenticated } = useSimpleAuth();
-
   const patientId = props.patientId;
   // console.log(patientId);
+  const caretakerId = patient.caretaker_id;
+  // console.log(caretakerId);
 
   const getPatient = () => {
     if (isAuthenticated()) {
@@ -65,17 +67,18 @@ const PatientDetail = (props) => {
       <div id="Patient">
         <Home />
         <div className="PatientCard">
-          {/* <p>Caretaker: {patient.caretaker.user.first_name}</p> */}
-          <p>
+          <h3>
             Patient: {patient.first_name} {patient.last_name}
-          </p>
+          </h3>
+          {/* <h3>caretaker: {patient.caretaker_id}</h3> */}
           <p>Diagnosis: {patient.diagnosis}</p>
           <p>Year of Birth: {patient.year_of_birth}</p>
           <div className="Patient_btn">
-            <Button>
-              <Link to={`/patients/${patient.id}/edit`}>Edit</Link>
-            </Button>
-            <Button color="danger" onClick={submit}>
+            <Link to={`/patients/${patient.id}/edit`}>
+              <Button>Edit</Button>
+            </Link>
+
+            <Button variant="danger" onClick={submit}>
               Delete
             </Button>
           </div>
@@ -83,9 +86,15 @@ const PatientDetail = (props) => {
         <SongResponseList
           patientName={patient.first_name}
           patientId={patientId}
+          caretakerId={caretakerId}
           {...props}
         />
-        <SongListPatient {...props} />
+        <SongListPatient
+          patientId={patientId}
+          caretakerId={caretakerId}
+          {...props}
+          {...props}
+        />
       </div>
     </>
   );

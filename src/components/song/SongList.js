@@ -1,14 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import ApiManager from "../../modules/ApiManager";
 import { SongCard } from "../song/SongCard";
-import { Button } from "reactstrap";
+import Button from "react-bootstrap/Button";
 import "./SongCard.css";
+import Accordion from "react-bootstrap/Accordion";
+import Card from "react-bootstrap/Card";
 
 export const SongList = (props) => {
   const year = useRef();
   const [songs, setSongs] = useState([]);
-
-  //   const { isAuthenticated } = useSimpleAuth();
+  const [songsByYear, setSongsByYear] = useState({});
 
   let year_range = [];
 
@@ -29,16 +30,25 @@ export const SongList = (props) => {
 
     ApiManager.getByYear(selectedYear.year).then(setSongs);
   };
-
-  // console.table(songs);
+  useEffect(() => {
+    const songsByYear = {};
+    songs.forEach((song) => {
+      if (song.year in songsByYear) {
+        songsByYear[song.year].push(song);
+      } else {
+        songsByYear[song.year] = [song];
+      }
+    });
+    setSongsByYear(songsByYear);
+  }, [songs]);
 
   return (
     <>
       <div className="SongList">
         <form className="select_year" onSubmit={handleSongSelection}>
           <h4>
-            Select Birth Year to Find Top Billboard Hits from 10 to 20 years of
-            age.
+            Select a Birth Year to Find Top Billboard Hits when 10 to 20 years
+            of age.
           </h4>
           <fieldset>
             <select ref={year}>
@@ -59,20 +69,28 @@ export const SongList = (props) => {
           </fieldset>
         </form>
         <div>
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Rank</th>
-                <th scope="col">Song</th>
-                <th scope="col">Artist</th>
-                <th scope="col">Year</th>
-              </tr>
-            </thead>
-          </table>
-
-          {songs.map((song) => (
-            <SongCard key={`song-${song.id}`} song={song} />
-          ))}
+          {Object.keys(songsByYear).map((year) => {
+            return (
+              <div key={year}>
+                <Accordion>
+                  <Card>
+                    <Card.Header>
+                      <Accordion.Toggle as={Button} varient="Link" eventKey="0">
+                        <h3>Year:{year}</h3>
+                      </Accordion.Toggle>
+                    </Card.Header>
+                    <Accordion.Collapse eventKey="0">
+                      <Card.Body>
+                        {songsByYear[year].map((song) => (
+                          <SongCard key={song.id} song={song} />
+                        ))}
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
+                </Accordion>
+              </div>
+            );
+          })}
         </div>
       </div>
     </>

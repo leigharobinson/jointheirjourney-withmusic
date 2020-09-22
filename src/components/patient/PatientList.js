@@ -5,7 +5,7 @@ import { Home } from "../home/Home";
 import { Link } from "react-router-dom";
 import ApiManager from "../../modules/ApiManager";
 import "./Patient.css";
-import { Button } from "reactstrap";
+import Button from "react-bootstrap/Button";
 
 const PatientList = (props) => {
   const [patients, setPatients] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { withRouter } from "react-router-dom";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
-import { Button } from "reactstrap";
+import Button from "react-bootstrap/Button";
 import "./Login.css";
 
 const Register = (props) => {

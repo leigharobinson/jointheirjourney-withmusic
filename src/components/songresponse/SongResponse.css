@@ -5,7 +5,12 @@
 }
 
 .SongResponseList {
-  border: blue solid 3px;
+  border: blue solid 5px;
   padding: 1em;
   margin: 1em;
+}
+
+.Parent {
+  display: flex;
+  justify-content: space-between;
 }
