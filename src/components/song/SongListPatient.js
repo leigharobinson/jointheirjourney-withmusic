@@ -10,6 +10,7 @@ import Card from "react-bootstrap/Card";
 
 const SongListPatient = (props) => {
   const { isAuthenticated } = useSimpleAuth();
+  const [songsByYear, setSongsByYear] = useState({});
   const [songs, setSongs] = useState([]);
   const [patient, setPatient] = useState([
     {
@@ -49,6 +50,17 @@ const SongListPatient = (props) => {
 
   // console.table(songs);
   useEffect(getPatientSongs, []);
+  useEffect(() => {
+    const songsByYear = {};
+    songs.forEach((song) => {
+      if (song.year in songsByYear) {
+        songsByYear[song.year].push(song);
+      } else {
+        songsByYear[song.year] = [song];
+      }
+    });
+    setSongsByYear(songsByYear);
+  }, [songs]);
 
   return (
     <>
@@ -62,14 +74,42 @@ const SongListPatient = (props) => {
             </Card.Header>
             <Accordion.Collapse eventKey="0">
               <Card.Body>
-                {songs.map((song) => (
-                  <SongCard
-                    key={`song-${song.id}`}
-                    song={song}
-                    patientId={props.patientId}
-                    caretakerId={caretakerId}
-                  />
-                ))}
+                <div>
+                  {Object.keys(songsByYear).map((year) => {
+                    return (
+                      <div key={year}>
+                        <Accordion>
+                          <Card>
+                            <Card.Header>
+                              <Accordion.Toggle
+                                size="sm"
+                                as={Button}
+                                variant="outline-primary"
+                                eventKey="0"
+                              >
+                                <h5>Year:{year}</h5>
+                              </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse eventKey="0">
+                              <Card.Body>
+                                {songsByYear[year].map((song) => (
+                                  <SongCard
+                                    patientId={props.patientId}
+                                    caretakerId={caretakerId}
+                                    patientName={patient.first_name}
+                                    {...props}
+                                    key={song.id}
+                                    song={song}
+                                  />
+                                ))}
+                              </Card.Body>
+                            </Accordion.Collapse>
+                          </Card>
+                        </Accordion>
+                      </div>
+                    );
+                  })}
+                </div>
               </Card.Body>
             </Accordion.Collapse>
           </Card>

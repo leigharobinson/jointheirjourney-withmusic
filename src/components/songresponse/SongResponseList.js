@@ -94,6 +94,8 @@ const SongResponseList = (props) => {
                       vocalization_id={response.vocalization_id}
                       liked_song={response.liked_song.description}
                       liked_song_id={response.liked_song_id}
+                      getSongResponses={getSongResponses}
+                      {...props}
                     />
                   ))}
                 </Card.Body>

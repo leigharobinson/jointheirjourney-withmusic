@@ -3,6 +3,7 @@ import "./SongResponse.css";
 import { SongResponseDetail } from "../songresponse/SongResponseDetails";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import ApiManager from "../../modules/ApiManager";
 import "./SongResponse.css";
 
 export const SongResponseCard = (props) => {
@@ -36,6 +37,12 @@ export const SongResponseCard = (props) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const deleteSongResponse = () => {
+    ApiManager.destroy("songresponses", props.songResponse.id)
+      .then(handleClose())
+      .then(props.getSongResponses());
+  };
 
   return (
     <>
@@ -85,8 +92,8 @@ export const SongResponseCard = (props) => {
               <Button variant="secondary" onClick={handleClose}>
                 Edit
               </Button>
-              <Button variant="primary" onClick={handleClose}>
-                Save Changes
+              <Button variant="danger" onClick={deleteSongResponse}>
+                Delete
               </Button>
             </Modal.Footer>
           </Modal>

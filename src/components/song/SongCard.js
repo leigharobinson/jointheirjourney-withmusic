@@ -22,10 +22,12 @@ export const SongCard = (props) => {
       {isAuthenticated() ? (
         <>
           <div className="SongCard">
-            <h3>Billboard Rank: {props.song.position}</h3>
-            <h4> Song: "{props.song.song_title}"</h4>
-            <h4>Artist: {props.song.artist}</h4>
-            <h4>Year: {props.song.year}</h4>
+            <h6>{props.song.year}</h6>
+            <h6>Billboard Rank: {props.song.position}</h6>
+            <h6>
+              Song:<strong> "{props.song.song_title}"</strong>
+            </h6>
+            <h6>Artist: {props.song.artist}</h6>
             <Button variant="primary" onClick={handleShow}>
               Record Song Response
             </Button>
@@ -37,18 +39,16 @@ export const SongCard = (props) => {
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <SongResponseForm patientId={patientId} {...props} />
+                <SongResponseForm
+                  patientId={patientId}
+                  handleClose={handleClose}
+                  {...props}
+                />
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
-                {/* <Button variant="secondary" onClick={handleClose}>
-                  Edit
-                </Button>
-                <Button variant="primary" onClick={handleClose}>
-                  Save Changes
-                </Button> */}
               </Modal.Footer>
             </Modal>
           </div>
