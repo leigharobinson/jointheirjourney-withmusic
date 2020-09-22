@@ -27,7 +27,7 @@ const NavBar = (props) => {
                 onClick={() => {
                   logout();
                   props.history.push({
-                    pathname: "/",
+                    pathname: "/login",
                   });
                 }}
               >

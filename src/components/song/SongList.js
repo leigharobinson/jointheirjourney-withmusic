@@ -75,8 +75,13 @@ export const SongList = (props) => {
                 <Accordion>
                   <Card>
                     <Card.Header>
-                      <Accordion.Toggle as={Button} varient="Link" eventKey="0">
-                        <h3>Year:{year}</h3>
+                      <Accordion.Toggle
+                        size="sm"
+                        as={Button}
+                        variant="outline-primary"
+                        eventKey="0"
+                      >
+                        <h5>Year:{year}</h5>
                       </Accordion.Toggle>
                     </Card.Header>
                     <Accordion.Collapse eventKey="0">
