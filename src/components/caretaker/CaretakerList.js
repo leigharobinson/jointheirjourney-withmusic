@@ -4,7 +4,7 @@ import { Home } from "../home/Home";
 import ApiManager from "../../modules/ApiManager";
 import "./Caretaker.css";
 
-const CaretakerList = () => {
+const CaretakerList = (props) => {
   const { isAuthenticated } = useSimpleAuth();
   const [caretaker, setCaretaker] = useState({
     user: {},
@@ -18,7 +18,7 @@ const CaretakerList = () => {
         //product from API
         .then((caretaker) => {
           setCaretaker(caretaker[0]);
-          console.table(caretaker);
+          // console.table(caretaker);
         });
     }
   };
@@ -41,6 +41,14 @@ const CaretakerList = () => {
           <h5>Title: {caretaker.title}</h5>
           <h5>Username: {caretaker.user.username}</h5>
         </div>
+
+        <button
+          onClick={() => {
+            props.history.push(`/caretakers/edit/${caretaker.id}`);
+          }}
+        >
+          Edit
+        </button>
       </div>
     </>
   );
