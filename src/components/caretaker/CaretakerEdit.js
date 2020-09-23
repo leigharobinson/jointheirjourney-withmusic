@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-
 import { Home } from "../home/Home";
 import ApiManager from "../../modules/ApiManager";
 import "./Caretaker.css";
@@ -19,6 +18,7 @@ export const CaretakerEdit = (props) => {
   const getCaretaker = () => {
     ApiManager.get("caretakers").then((caretaker) => {
       setCaretaker(caretaker[0]);
+      //grabing caretaker her to see what the Api call is giving back
       // console.table(caretaker);
     });
   };

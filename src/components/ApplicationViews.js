@@ -13,6 +13,7 @@ import { SongList } from "../components/song/SongList";
 import SongResponseForm from "../components/songresponse/SongResponseForm";
 import CaretakerList from "../components/caretaker/CaretakerList";
 import { CaretakerEdit } from "../components/caretaker/CaretakerEdit";
+import { SongResponseEdit } from "./songresponse/SongResponseEdit";
 
 const ApplicationViews = () => {
   const { isAuthenticated } = useSimpleAuth();
@@ -155,6 +156,22 @@ const ApplicationViews = () => {
               return (
                 <SongResponseForm
                   patientId={props.match.params.patientId}
+                  {...props}
+                />
+              );
+            } else {
+              return <Redirect to="Login" />;
+            }
+          }}
+        />
+        <Route
+          exact
+          path="/songresponses/edit/:responseId(\d+)"
+          render={(props) => {
+            if (isAuthenticated()) {
+              return (
+                <SongResponseEdit
+                  responseId={props.match.params.responseId}
                   {...props}
                 />
               );

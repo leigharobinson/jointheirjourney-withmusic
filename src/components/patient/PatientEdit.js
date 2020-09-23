@@ -34,7 +34,7 @@ const PatientEdit = (props) => {
     };
 
     ApiManager.update("patients", editedPatient).then(() =>
-      props.history.push("/patients/" + `${editedPatient.id}`)
+      props.history.push(`/patients/${editedPatient.id}`)
     );
   };
 

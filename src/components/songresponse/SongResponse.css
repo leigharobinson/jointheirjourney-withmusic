@@ -14,3 +14,8 @@
   display: flex;
   justify-content: space-between;
 }
+
+.modal_btn {
+  padding: 0.5em;
+  margin: 0.5em;
+}

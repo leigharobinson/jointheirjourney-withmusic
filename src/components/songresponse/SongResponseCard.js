@@ -5,20 +5,18 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import ApiManager from "../../modules/ApiManager";
 import "./SongResponse.css";
+import { SongResponseEdit } from "./SongResponseEdit";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 export const SongResponseCard = (props) => {
   const [show, setShow] = useState(false);
+  const [editClicked, setEditClicked] = useState(false);
 
   const dateCreated = props.songResponse.created_at;
-  const songTitle = props.song;
+  const songTitle = props.song_title;
   const artist = props.artist;
-  const eye_contact = props.eye_contact;
-  const talkativeness = props.talkativeness;
-  const mood = props.mood;
-  const movement = props.movement;
-  const vocalization = props.vocalization;
-  const liked_song = props.liked_song;
-  const notes = props.songResponse.notes;
+  const responseId = props.songResponse.id;
 
   const eye_contact_score = parseInt(props.eye_contact_id);
   const talkativeness_score = parseInt(props.talkativeness_id);
@@ -38,11 +36,31 @@ export const SongResponseCard = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const deleteSongResponse = () => {
-    ApiManager.destroy("songresponses", props.songResponse.id)
-      .then(handleClose())
-      .then(props.getSongResponses());
+  const deleteConfirm = () => {
+    confirmAlert({
+      title: "Confirm to Delete",
+      message: "Are you sure you want to delete this song response?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () =>
+            deleteSongResponse("songresponses", props.songResponse.id),
+        },
+        {
+          label: "No",
+          // onClick: () => alert("Click No"),
+        },
+      ],
+    });
   };
+
+  const deleteSongResponse = (type, id) => {
+    ApiManager.destroy(type, id).then(() => props.history.push("/patients"));
+  };
+
+  // Here I'm trying to state to True so that I can see it is True and return something different on Song
+  // Response DetailsDetails
+  const changeFormTrue = () => setEditClicked(!editClicked);
 
   return (
     <>
@@ -62,39 +80,71 @@ export const SongResponseCard = (props) => {
             <div id="modal_space"></div>
             <Modal.Header closeButton>
               <Modal.Title>
-                <h1>Song Response Details</h1>
+                {!editClicked ? (
+                  <h1>Song Response Details</h1>
+                ) : (
+                  <h1>Song Response Edit</h1>
+                )}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <SongResponseDetail
-                {...props}
-                totalScore={totalScore}
-                dateCreated={dateCreated}
-                songTitle={songTitle}
-                eye_contact={eye_contact}
-                eye_contact_score={eye_contact_score}
-                talkativeness={talkativeness}
-                talkativeness_score={talkativeness_score}
-                mood={mood}
-                mood_score={mood_score}
-                movement={movement}
-                movement_score={movement_score}
-                vocalization={vocalization}
-                vocalization_score={vocalization_score}
-                liked_song={liked_song}
-                liked_song_score={liked_song_score}
-              />
+              {!editClicked ? (
+                <SongResponseDetail
+                  {...props}
+                  totalScore={totalScore}
+                  responseId={responseId}
+                  // THis is an experiment if I can get set up a different display
+                  // of information in modal if
+                  //State of editClicked was changed to True
+                />
+              ) : (
+                <SongResponseEdit
+                  {...props}
+                  getSongResponses={props.getSongResponses}
+                  changeFormTrue={changeFormTrue}
+                  responseId={responseId}
+                />
+              )}
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-              <Button variant="secondary" onClick={handleClose}>
-                Edit
-              </Button>
-              <Button variant="danger" onClick={deleteSongResponse}>
-                Delete
-              </Button>
+              {!editClicked ? (
+                <>
+                  <div>
+                    <Button
+                      className="modal_btn"
+                      variant="primary"
+                      onClick={() => {
+                        changeFormTrue();
+                      }}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      className="modal_btn"
+                      variant="danger"
+                      onClick={() => {
+                        deleteConfirm();
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div>
+                    <Button
+                      className="modal_btn"
+                      variant="primary"
+                      onClick={() => {
+                        setEditClicked(false);
+                      }}
+                    >
+                      Details
+                    </Button>
+                  </div>
+                </>
+              )}
             </Modal.Footer>
           </Modal>
         </div>

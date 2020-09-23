@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 const SongResponseList = (props) => {
+  const [totalScore, setTotalScore] = useState(Number);
   const [songResponses, setSongResponses] = useState([
     {
       caretaker_id: "",
@@ -80,8 +81,9 @@ const SongResponseList = (props) => {
                     <SongResponseCard
                       key={`response-${response.id}`}
                       songResponse={response}
-                      song={response.song.song_title}
+                      song_title={response.song.song_title}
                       artist={response.song.artist}
+                      responseId={response.id}
                       eye_contact={response.eye_contact.description}
                       eye_contact_id={response.eye_contact_id}
                       talkativeness={response.talkativeness.description}
