@@ -19,6 +19,7 @@ export const CaretakerEdit = (props) => {
   const getCaretaker = () => {
     ApiManager.get("caretakers").then((caretaker) => {
       setCaretaker(caretaker[0]);
+      //grabing caretaker her to see what the Api call is giving back
       // console.table(caretaker);
     });
   };

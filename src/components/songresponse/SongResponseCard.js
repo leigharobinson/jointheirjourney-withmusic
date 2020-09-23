@@ -19,6 +19,7 @@ export const SongResponseCard = (props) => {
   const vocalization = props.vocalization;
   const liked_song = props.liked_song;
   const notes = props.songResponse.notes;
+  const responseId = props.songResponse.id;
 
   const eye_contact_score = parseInt(props.eye_contact_id);
   const talkativeness_score = parseInt(props.talkativeness_id);
@@ -83,6 +84,7 @@ export const SongResponseCard = (props) => {
                 vocalization_score={vocalization_score}
                 liked_song={liked_song}
                 liked_song_score={liked_song_score}
+                responseId={responseId}
               />
             </Modal.Body>
             <Modal.Footer>

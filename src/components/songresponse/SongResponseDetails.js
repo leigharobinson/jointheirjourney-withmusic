@@ -1,11 +1,41 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./SongResponse.css";
+import ApiManager from "../../modules/ApiManager";
 
 export const SongResponseDetail = (props) => {
+  console.log(props.responseId);
+  const [songresponse, setSongResponse] = useState({
+    eye_contact: {},
+    talkativeness: {},
+    mood: {},
+    movement: {},
+    vocalization: {},
+    liked_song: {},
+    notes: "",
+  });
+
+  const getSongResponse = () => {
+    ApiManager.getById("songresponses", props.responseId).then(
+      (songResponse) => {
+        setSongResponse(songresponse[0]);
+        //grabing caretaker her to see what the Api call is giving back
+        console.log(songresponse);
+      }
+    );
+  };
+
+  useEffect(() => {
+    getSongResponse();
+  }, []);
+
   return (
     <>
       <div>
-        <h4> {props.dateCreated}</h4>
+        <h4>
+          {" "}
+          {props.dateCreated}
+          {songresponse.song.artist}
+        </h4>
         <h5>
           <strong>"{props.songTitle}"</strong> by: {props.artist}
           <hr />
