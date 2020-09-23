@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-
 import { Home } from "../home/Home";
 import ApiManager from "../../modules/ApiManager";
 import "./Caretaker.css";
