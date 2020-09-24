@@ -147,7 +147,6 @@ const PatientDetail = (props) => {
         <SongListPatient
           patientId={patientId}
           caretakerId={caretakerId}
-          setSongResponses={setSongResponses}
           getSongResponses={getSongResponses}
           {...props}
         />
