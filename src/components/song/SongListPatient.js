@@ -94,6 +94,7 @@ const SongListPatient = (props) => {
                               <Card.Body>
                                 {songsByYear[year].map((song) => (
                                   <SongCard
+                                    getSongResponses={props.getSongResponses}
                                     patientId={props.patientId}
                                     caretakerId={caretakerId}
                                     patientName={patient.first_name}

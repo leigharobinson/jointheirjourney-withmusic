@@ -38,6 +38,8 @@ export const SongResponseCard = (props) => {
   const deleteSongResponse = (type, id) => {
     ApiManager.destroy(type, id).then(() => {
       console.log("this thing deleted");
+      props.getSongResponses();
+      handleClose();
     });
 
     handleClose();
@@ -52,7 +54,7 @@ export const SongResponseCard = (props) => {
     <>
       <div className="songResponseCard">
         <h4>
-          <strong>Score: {totalScore}/36</strong>
+          <strong>Score: {totalScore}/30</strong>
         </h4>
         <h5>{props.response.created_at}</h5>
         <h5>
@@ -112,10 +114,7 @@ export const SongResponseCard = (props) => {
                       className="modal_btn"
                       variant="danger"
                       onClick={() => {
-                        deleteSongResponse(
-                          "songresponses",
-                          props.songResponse.id
-                        );
+                        deleteSongResponse("songresponses", props.response.id);
                       }}
                     >
                       Delete

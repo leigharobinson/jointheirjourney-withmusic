@@ -26,6 +26,7 @@ const SongResponseList = (props) => {
                     <SongResponseCard
                       key={`response-${response.id}`}
                       response={response}
+                      getSongResponses={props.getSongResponses}
                       {...props}
                     />
                   ))}

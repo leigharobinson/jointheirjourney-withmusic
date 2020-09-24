@@ -3,7 +3,6 @@ import "../song/SongCard.css";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-
 import SongResponseForm from "../songresponse/SongResponseForm";
 
 export const SongCard = (props) => {
@@ -41,7 +40,7 @@ export const SongCard = (props) => {
                 <SongResponseForm
                   patientId={patientId}
                   handleClose={handleClose}
-                  setSongResponses={props.setSongResponses}
+                  // setSongResponses={props.setSongResponses}
                   getSongResponses={props.getSongResponses}
                   {...props}
                 />

@@ -105,7 +105,8 @@ const SongResponseForm = (props) => {
       ApiManager.post("songresponses", newSongResponse).then(() => {
         console.log("Added");
         props.handleClose();
-
+        props.getSongResponses();
+        //just checking but knew this value would prob be undefined
         // props.history.push(`/patients/${props.patientId}`);
       });
     }
