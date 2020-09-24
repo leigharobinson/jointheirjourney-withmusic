@@ -5,9 +5,11 @@
 }
 
 .SongList {
-  border: orange solid 5px;
+  /* border: orange solid 5px; */
+  background-image: url("../images/lightPurple.png");
   padding: 1em;
   margin: 1em;
+  border-radius: 5%;
 }
 .SongList Button {
   padding: 0.5em;

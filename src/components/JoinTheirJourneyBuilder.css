@@ -42,3 +42,9 @@ img {
   width: 100px;
   height: auto;
 }
+main {
+  background-color: rgb(165, 181, 232);
+}
+html {
+  background-color: rgb(165, 181, 232);
+}
