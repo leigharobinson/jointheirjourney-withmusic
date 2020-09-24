@@ -74,29 +74,41 @@ const SongResponseForm = (props) => {
   const constructNewSongResponse = (e) => {
     e.preventDefault();
 
-    const newSongResponse = {
-      // They key portion has to match what I called them in the Api
-      // The Value has to match what I called them in my useRef or props
+    if (
+      eye_contact.current.value === "" ||
+      talkativeness.current.value === "" ||
+      mood.current.value === "" ||
+      movement.current.value === "" ||
+      vocalization.current.value === "" ||
+      liked_song.current.value === ""
+    ) {
+      window.alert(
+        "Please select Eye Contact, Talkativeness, Mood, Vocalization values as well as a value for how much you thought the patient enjoyed the song."
+      );
+    } else {
+      const newSongResponse = {
+        // They key portion has to match what I called them in the Api
+        // The Value has to match what I called them in my useRef or props
+        song_id: props.song.id,
+        caretaker_id: props.caretakerId,
+        patient_id: props.patientId,
+        eye_contact_id: eye_contact.current.value,
+        talkativeness_id: talkativeness.current.value,
+        mood_id: mood.current.value,
+        movement_id: movement.current.value,
+        vocalization_id: vocalization.current.value,
+        liked_song_id: liked_song.current.value,
+        notes: notes.current.value,
+      };
 
-      song_id: props.song.id,
-      caretaker_id: props.caretakerId,
-      patient_id: props.patientId,
-      eye_contact_id: eye_contact.current.value,
-      talkativeness_id: talkativeness.current.value,
-      mood_id: mood.current.value,
-      movement_id: movement.current.value,
-      vocalization_id: vocalization.current.value,
-      liked_song_id: liked_song.current.value,
-      notes: notes.current.value,
-    };
+      // console.log(newSongResponse);
+      ApiManager.post("songresponses", newSongResponse).then(() => {
+        console.log("Added");
+        props.handleClose();
 
-    // console.log(newSongResponse);
-    ApiManager.post("songresponses", newSongResponse).then(() => {
-      console.log("Added");
-      props.handleClose();
-
-      // props.history.push(`/patients/${props.patientId}`);
-    });
+        // props.history.push(`/patients/${props.patientId}`);
+      });
+    }
   };
 
   // Had to make sure I was getting the spread opperatorl
