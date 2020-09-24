@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../song/SongCard.css";
-// import { Link } from "react-router-dom";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -42,6 +41,8 @@ export const SongCard = (props) => {
                 <SongResponseForm
                   patientId={patientId}
                   handleClose={handleClose}
+                  setSongResponses={props.setSongResponses}
+                  getSongResponses={props.getSongResponses}
                   {...props}
                 />
               </Modal.Body>

@@ -11,6 +11,7 @@ import { Home } from "../home/Home";
 import Button from "react-bootstrap/Button";
 
 const PatientDetail = (props) => {
+  const { isAuthenticated } = useSimpleAuth();
   const [patient, setPatient] = useState({
     first_name: "",
     caretaker: {
@@ -20,11 +21,61 @@ const PatientDetail = (props) => {
       },
     },
   });
-  const { isAuthenticated } = useSimpleAuth();
+  const [songResponses, setSongResponses] = useState([
+    {
+      caretaker_id: "",
+      patient_id: "",
+      patient: {
+        first_name: "",
+        caretaker: {
+          first_name: "",
+        },
+      },
+      song_id: "",
+      song: {
+        id: "",
+        song_title: "",
+      },
+      eye_contact_id: "",
+      eye_contact: {
+        description: "",
+      },
+      talkativeness_id: "",
+      talkativeness: {
+        description: "",
+      },
+      mood_id: "",
+      mood: {
+        description: "",
+      },
+      movement_id: "",
+      movement: {
+        description: "",
+      },
+      vocalization_id: "",
+      vocalization: {
+        description: "",
+      },
+      liked_song_id: "",
+      liked_song: {
+        description: "",
+      },
+    },
+  ]);
+  //Some Values to be passed to SongResonseList
   const patientId = props.patientId;
   // console.log(patientId);
   const caretakerId = patient.caretaker_id;
   // console.log(caretakerId);
+
+  const getSongResponses = () => {
+    if (isAuthenticated()) {
+      ApiManager.getSongResponsesById(props.patientId).then((response) => {
+        setSongResponses(response);
+        // console.log(response);
+      });
+    }
+  };
 
   const getPatient = () => {
     if (isAuthenticated()) {
@@ -40,7 +91,9 @@ const PatientDetail = (props) => {
     }
   };
   useEffect(getPatient, []);
+  useEffect(getSongResponses, []);
 
+  //Use this to delete a patient and then return you to Patient List page
   const deleteObj = (type, id) => {
     ApiManager.destroy(type, id).then(() => props.history.push("/patients"));
   };
@@ -87,12 +140,15 @@ const PatientDetail = (props) => {
           patientName={patient.first_name}
           patientId={patientId}
           caretakerId={caretakerId}
+          songResponses={songResponses}
+          getSongResponses={getSongResponses}
           {...props}
         />
         <SongListPatient
           patientId={patientId}
           caretakerId={caretakerId}
-          {...props}
+          setSongResponses={setSongResponses}
+          getSongResponses={getSongResponses}
           {...props}
         />
       </div>

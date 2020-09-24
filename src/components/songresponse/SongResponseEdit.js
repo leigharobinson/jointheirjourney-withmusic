@@ -119,6 +119,9 @@ export const SongResponseEdit = (props) => {
       <h3>{songresponse.song.artist}</h3>
       <Form.Group>
         <br />
+        <Form.Label>
+          <strong>Eye Contact:</strong>
+        </Form.Label>
         <Form.Control
           size="sm"
           as="select"
@@ -135,6 +138,9 @@ export const SongResponseEdit = (props) => {
           ))}
         </Form.Control>
         <br />
+        <Form.Label>
+          <strong>Talkativeness:</strong>
+        </Form.Label>
         <Form.Control
           size="sm"
           as="select"
@@ -151,6 +157,9 @@ export const SongResponseEdit = (props) => {
           ))}
         </Form.Control>
         <br />
+        <Form.Label>
+          <strong>Mood:</strong>
+        </Form.Label>
         <Form.Control
           size="sm"
           as="select"
@@ -167,6 +176,9 @@ export const SongResponseEdit = (props) => {
           ))}
         </Form.Control>
         <br />
+        <Form.Label>
+          <strong>Movement</strong>
+        </Form.Label>
         <Form.Control
           size="sm"
           as="select"
@@ -200,6 +212,9 @@ export const SongResponseEdit = (props) => {
           ))}
         </Form.Control>
         <br />
+        <Form.Label>
+          <strong>I think {props.patientName} liked this song.</strong>
+        </Form.Label>
         <Form.Control
           size="sm"
           as="select"
@@ -216,7 +231,9 @@ export const SongResponseEdit = (props) => {
           ))}
         </Form.Control>
         <br />
-        <Form.Label>Notes:</Form.Label>
+        <Form.Label>
+          <strong>Notes:</strong>
+        </Form.Label>
         <Form.Control
           size="sm"
           type="text"
@@ -236,104 +253,6 @@ export const SongResponseEdit = (props) => {
           </button>
         </div>
       </Form.Group>
-      {/* <div className="SongResponseForm">
-        <form onSubmit={editSongResponse}>
-          <fieldset>
-            <div>
-              <select ref={eye_contact}>
-                <option defaultValue={songresponse.eye_contact_id}>
-                  {songresponse.eye_contact_id}.
-                  {songresponse.eye_contact.description}
-                </option>
-                {eyecontactVals.map((eye_contact) => (
-                  <option key={eye_contact.id} value={eye_contact.id}>
-                    {eye_contact.id}. {eye_contact.description}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <select ref={talkativeness}>
-                <option defaultValue={songresponse.talkativeness_id}>
-                  {songresponse.talkativeness_id}.
-                  {songresponse.talkativeness.description}
-                </option>
-                {talkativenessVals.map((talkativeness) => (
-                  <option key={talkativeness.id} value={talkativeness.id}>
-                    {talkativeness.id}. {talkativeness.description}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <select ref={mood}>
-                <option defaultValue={songresponse.mood_id}>
-                  {songresponse.mood_id}. {songresponse.mood.description}
-                </option>
-                {moodVals.map((mood) => (
-                  <option key={mood.id} value={mood.id}>
-                    {mood.id}. {mood.description}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <select ref={movement}>
-                <option defaultValue={songresponse.movement_id}>
-                  {songresponse.movement_id}.{songresponse.movement.description}
-                </option>
-                {movementVals.map((movement) => (
-                  <option key={movement.id} value={movement.id}>
-                    {movement.id}. {movement.description}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <select ref={vocalization}>
-                <option defaultValue={songresponse.vocalization_id}>
-                  {songresponse.vocalization_id}.
-                  {songresponse.vocalization.description}
-                </option>
-                {vocalizationVals.map((vocalization) => (
-                  <option key={vocalization.id} value={vocalization.id}>
-                    {vocalization.id}. {vocalization.description}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <select ref={liked_song}>
-                <option defaultValue={songresponse.liked_song_id}>
-                  Did {songresponse.patient.first_name} like this song?
-                </option>
-                {likedSongVals.map((liked_song) => (
-                  <option key={liked_song.id} value={liked_song.id}>
-                    {liked_song.id}. {liked_song.description}
-                  </option>
-                ))}
-              </select>
-
-              <label htmlFor="notes">Notes:</label>
-              <input
-                ref={notes}
-                type="text"
-                name="notes"
-                className="form-control"
-                placeholder="Add Notes Here"
-                required
-                autoFocus
-                defaultValue={songresponse.notes}
-              />
-            </div>
-            <div className="alignRight">
-              <button type="submit">Submit</button>
-            </div>
-          </fieldset>
-        </form>
-      </div> */}
     </>
   );
 };

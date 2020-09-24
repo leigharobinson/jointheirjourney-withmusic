@@ -1,13 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./SongResponse.css";
 import ApiManager from "../../modules/ApiManager";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import { SongResponseEdit } from "../songresponse/SongResponseEdit";
 
 export const SongResponseDetail = (props) => {
-  const [show, setShow] = useState(false);
   const { isAuthenticated } = useSimpleAuth();
   const [songresponse, setSongResponse] = useState({
     eye_contact: {},
@@ -20,8 +16,8 @@ export const SongResponseDetail = (props) => {
     notes: "",
   });
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
   const getSongResponse = () => {
     if (isAuthenticated()) {

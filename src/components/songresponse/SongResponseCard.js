@@ -6,24 +6,23 @@ import Button from "react-bootstrap/Button";
 import ApiManager from "../../modules/ApiManager";
 import "./SongResponse.css";
 import { SongResponseEdit } from "./SongResponseEdit";
-import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 export const SongResponseCard = (props) => {
   const [show, setShow] = useState(false);
   const [editClicked, setEditClicked] = useState(false);
 
-  const dateCreated = props.songResponse.created_at;
-  const songTitle = props.song_title;
-  const artist = props.artist;
-  const responseId = props.songResponse.id;
+  // const dateCreated = props.response.created_at;
+  // const songTitle = props.song_title;
+  // const artist = props.response.artist;
+  const responseId = props.response.id;
 
-  const eye_contact_score = parseInt(props.eye_contact_id);
-  const talkativeness_score = parseInt(props.talkativeness_id);
-  const mood_score = parseInt(props.mood_id);
-  const movement_score = parseInt(props.movement_id);
-  const vocalization_score = parseInt(props.vocalization_id);
-  const liked_song_score = parseInt(props.liked_song_id);
+  const eye_contact_score = parseInt(props.response.eye_contact_id);
+  const talkativeness_score = parseInt(props.response.talkativeness_id);
+  const mood_score = parseInt(props.response.mood_id);
+  const movement_score = parseInt(props.response.movement_id);
+  const vocalization_score = parseInt(props.response.vocalization_id);
+  const liked_song_score = parseInt(props.response.liked_song_id);
 
   const totalScore =
     eye_contact_score +
@@ -36,26 +35,13 @@ export const SongResponseCard = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const deleteConfirm = () => {
-    confirmAlert({
-      title: "Confirm to Delete",
-      message: "Are you sure you want to delete this song response?",
-      buttons: [
-        {
-          label: "Yes",
-          onClick: () =>
-            deleteSongResponse("songresponses", props.songResponse.id),
-        },
-        {
-          label: "No",
-          // onClick: () => alert("Click No"),
-        },
-      ],
-    });
-  };
-
   const deleteSongResponse = (type, id) => {
-    ApiManager.destroy(type, id).then(() => props.history.push("/patients"));
+    ApiManager.destroy(type, id).then(() => {
+      console.log("this thing deleted");
+    });
+
+    handleClose();
+    // props.getSongResponses();
   };
 
   // Here I'm trying to state to True so that I can see it is True and return something different on Song
@@ -68,9 +54,10 @@ export const SongResponseCard = (props) => {
         <h4>
           <strong>Score: {totalScore}/36</strong>
         </h4>
-        <h5>{dateCreated}</h5>
+        <h5>{props.response.created_at}</h5>
         <h5>
-          <strong>"{songTitle}"</strong> by: {artist}
+          <strong>"{props.response.song.song_title}"</strong> by:{" "}
+          {props.response.song.artist}
         </h5>
         <div>
           <Button variant="primary" onClick={handleShow}>
@@ -100,9 +87,11 @@ export const SongResponseCard = (props) => {
               ) : (
                 <SongResponseEdit
                   {...props}
-                  getSongResponses={props.getSongResponses}
                   changeFormTrue={changeFormTrue}
                   responseId={responseId}
+                  songResponses={props.songResponses}
+                  getSongResponses={props.getSongResponses}
+                  patientName={props.response.patient.first_name}
                 />
               )}
             </Modal.Body>
@@ -123,7 +112,10 @@ export const SongResponseCard = (props) => {
                       className="modal_btn"
                       variant="danger"
                       onClick={() => {
-                        deleteConfirm();
+                        deleteSongResponse(
+                          "songresponses",
+                          props.songResponse.id
+                        );
                       }}
                     >
                       Delete
