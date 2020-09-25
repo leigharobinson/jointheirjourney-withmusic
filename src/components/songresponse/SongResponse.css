@@ -1,10 +1,13 @@
 .songResponseCard {
-  border: black solid 3px;
+  /* border: black solid 3px; */
+  background-color: rgb(165, 181, 232);
+  border-radius: 5px;
   padding: 1em;
   margin: 1em;
 }
 
 .SongResponseList {
+  background-color: rgb(165, 181, 232);
   border: blue solid 5px;
   padding: 1em;
   margin: 1em;

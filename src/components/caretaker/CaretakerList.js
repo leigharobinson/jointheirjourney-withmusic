@@ -3,6 +3,7 @@ import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import { Home } from "../home/Home";
 import ApiManager from "../../modules/ApiManager";
 import "./Caretaker.css";
+import Button from "react-bootstrap/Button";
 
 const CaretakerList = (props) => {
   const { isAuthenticated } = useSimpleAuth();
@@ -28,27 +29,29 @@ const CaretakerList = (props) => {
 
   return (
     <>
-      <div>
-        <Home />
-      </div>
-      <div className="CaretakerCard">
+      <div className="color_nav">
         <div>
-          <div>
-            <h3>
-              Name: {caretaker.user.first_name} {caretaker.user.last_name}{" "}
-            </h3>
-          </div>
-          <h5>Title: {caretaker.title}</h5>
-          <h5>Username: {caretaker.user.username}</h5>
+          <Home />
         </div>
+        <div className="CaretakerCard">
+          <div>
+            <div>
+              <h3>
+                Name: {caretaker.user.first_name} {caretaker.user.last_name}{" "}
+              </h3>
+            </div>
+            <h5>Title: {caretaker.title}</h5>
+            <h5>Username: {caretaker.user.username}</h5>
+          </div>
 
-        <button
-          onClick={() => {
-            props.history.push(`/caretakers/edit/${caretaker.id}`);
-          }}
-        >
-          Edit
-        </button>
+          <Button
+            onClick={() => {
+              props.history.push(`/caretakers/edit/${caretaker.id}`);
+            }}
+          >
+            Edit
+          </Button>
+        </div>
       </div>
     </>
   );

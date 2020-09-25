@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SongResponseCard } from "./SongResponseCard";
-import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
-import ApiManager from "../../modules/ApiManager";
+
 import "./SongResponse.css";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";

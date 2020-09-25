@@ -73,7 +73,7 @@ const SongListPatient = (props) => {
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
-              <Card.Body>
+              <Card.Body style={{ textAlign: "center" }}>
                 <div>
                   {Object.keys(songsByYear).map((year) => {
                     return (

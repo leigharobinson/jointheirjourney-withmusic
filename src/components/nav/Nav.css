@@ -1,0 +1,15 @@
+.color_nav {
+  background-color: rgb(165, 181, 232);
+}
+.logout_bx {
+  display: flex;
+}
+
+.Button {
+  height: 42px;
+  width: 78px;
+}
+
+.bkg_color {
+  background-color: rgb(165, 181, 232);
+}

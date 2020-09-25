@@ -35,50 +35,64 @@ const Login = (props) => {
   };
 
   return (
-    <main style={{ textAlign: "center" }}>
-      <div className="loginCard">
-        <form className="form--login" onSubmit={handleLogin}>
-          <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-          <fieldset>
-            <label htmlFor="inputUsername"> Username </label>
-            <input
-              ref={username}
-              type="username"
-              className="form-control"
-              placeholder="Username"
-              required
-              autoFocus
-            />
-          </fieldset>
-          <fieldset>
-            <label htmlFor="inputPassword"> Password </label>
-            <input
-              ref={password}
-              type="password"
-              id="password"
-              className="form-control"
-              placeholder="Password"
-              required
-            />
-          </fieldset>
-          <fieldset>
-            <Button type="submit">Sign in</Button>
-          </fieldset>
-        </form>
-        <div className="buttonDiv2">
-          <Button
-            className="createNewUserBtn"
-            type="button"
-            onClick={() => {
-              props.history.push("/register");
-            }}
-          >
-            Register
-          </Button>
+    <main>
+      <div style={{ textAlign: "center" }}>
+        <div className="logo_bx">
+          <img
+            alt="Join Their Journey with Music Logo"
+            src={require("../images/JTJlogo.png")}
+          />
         </div>
-      </div>
-      <div>
-        <SongList />
+        <div className="title">
+          <h1>Join Their Journey with Music</h1>
+        </div>
+
+        <div className="img_bx">
+          <div className="loginCard">
+            <form className="form--login" onSubmit={handleLogin}>
+              {/* <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1> */}
+              <fieldset>
+                {/* <label htmlFor="inputUsername"> Username </label> */}
+                <input
+                  ref={username}
+                  type="username"
+                  className="form-control"
+                  placeholder="Username"
+                  required
+                  autoFocus
+                />
+              </fieldset>
+              <fieldset>
+                {/* <label htmlFor="inputPassword"> Password </label> */}
+                <input
+                  ref={password}
+                  type="password"
+                  id="password"
+                  className="form-control"
+                  placeholder="Password"
+                  required
+                />
+              </fieldset>
+              <fieldset>
+                <div className="buttonDiv">
+                  <Button type="submit">Sign in</Button>
+                  <Button
+                    type="button"
+                    onClick={() => {
+                      props.history.push("/register");
+                    }}
+                  >
+                    Register
+                  </Button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+
+        <div>
+          <SongList />
+        </div>
       </div>
     </main>
   );

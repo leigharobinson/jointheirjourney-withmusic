@@ -117,39 +117,41 @@ const PatientDetail = (props) => {
 
   return (
     <>
-      <div id="Patient">
-        <Home />
-        <div className="PatientCard">
-          <h3>
-            Patient: {patient.first_name} {patient.last_name}
-          </h3>
-          {/* <h3>caretaker: {patient.caretaker_id}</h3> */}
-          <p>Diagnosis: {patient.diagnosis}</p>
-          <p>Year of Birth: {patient.year_of_birth}</p>
-          <div className="Patient_btn">
-            <Link to={`/patients/${patient.id}/edit`}>
-              <Button>Edit</Button>
-            </Link>
+      <div className="bkg_color">
+        <div id="Patient">
+          <Home />
+          <div className="PatientCard">
+            <h3>
+              Patient: {patient.first_name} {patient.last_name}
+            </h3>
+            {/* <h3>caretaker: {patient.caretaker_id}</h3> */}
+            <p>Diagnosis: {patient.diagnosis}</p>
+            <p>Year of Birth: {patient.year_of_birth}</p>
+            <div className="Patient_btn">
+              <Link to={`/patients/${patient.id}/edit`}>
+                <Button>Edit</Button>
+              </Link>
 
-            <Button variant="danger" onClick={submit}>
-              Delete
-            </Button>
+              <Button variant="danger" onClick={submit}>
+                Delete
+              </Button>
+            </div>
           </div>
+          <SongResponseList
+            patientName={patient.first_name}
+            patientId={patientId}
+            caretakerId={caretakerId}
+            songResponses={songResponses}
+            getSongResponses={getSongResponses}
+            {...props}
+          />
+          <SongListPatient
+            patientId={patientId}
+            caretakerId={caretakerId}
+            getSongResponses={getSongResponses}
+            {...props}
+          />
         </div>
-        <SongResponseList
-          patientName={patient.first_name}
-          patientId={patientId}
-          caretakerId={caretakerId}
-          songResponses={songResponses}
-          getSongResponses={getSongResponses}
-          {...props}
-        />
-        <SongListPatient
-          patientId={patientId}
-          caretakerId={caretakerId}
-          getSongResponses={getSongResponses}
-          {...props}
-        />
       </div>
     </>
   );
