@@ -19,6 +19,7 @@ export const SongList = (props) => {
   //   console.table(year_range);
 
   //Simplistic handler for year submit
+
   const handleSongSelection = (e) => {
     e.preventDefault();
 
@@ -45,29 +46,33 @@ export const SongList = (props) => {
   return (
     <>
       <div className="SongList">
-        <form className="select_year" onSubmit={handleSongSelection}>
-          <h4>
-            Select a Birth Year to Find Top Billboard Hits when 10 to 20 years
-            of age.
-          </h4>
-          <fieldset>
-            <select ref={year}>
-              <option> Birth Year</option>
-              {year_range.map((year) => (
-                <option key={year} value={year}>
-                  {year}
-                </option>
-              ))}
-            </select>
-
-            <div className="alignRight">
-              <Button type="submit">Submit</Button>
-            </div>
-            <Button onClick={() => setSongs([])} type="reset">
-              Clear Search
-            </Button>
-          </fieldset>
+        <form className="select_year">
+          <div className="year_select_bx">
+            <h6>Select a Birth Year!</h6>
+            <fieldset>
+              <select ref={year}>
+                <option> Birth Year</option>
+                {year_range.map((year) => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </fieldset>
+          </div>
         </form>
+        <div className="btn_box">
+          <Button onClick={handleSongSelection} type="submit">
+            Submit
+          </Button>
+          <Button onClick={() => setSongs([])} type="reset">
+            Clear
+          </Button>
+        </div>
+        <div className="hidden_words">
+          <h6>Top Billboad Hits</h6>
+          <h6>10-20 years old</h6>
+        </div>
         <div>
           {Object.keys(songsByYear).map((year) => {
             return (

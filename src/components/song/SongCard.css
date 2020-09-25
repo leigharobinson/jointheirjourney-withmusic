@@ -9,13 +9,20 @@
   background-image: url("../images/lightPurple.png");
   padding: 1em;
   margin: 1em;
-  border-radius: 5%;
+  border-radius: 5px;
 }
-.SongList Button {
+.btn_box Button {
   padding: 0.5em;
   margin: 0.5em;
+  height: 42px;
+  width: 73px;
 }
 
+.btn_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .SongPatientList {
   border: orange solid 5px;
   padding: 1em;
@@ -25,4 +32,9 @@
 .select_year select {
   padding: 0.5em;
   margin: 1em;
+}
+.year_select_bx {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

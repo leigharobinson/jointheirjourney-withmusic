@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Home } from "../home/Home";
 import ApiManager from "../../modules/ApiManager";
 import "./Caretaker.css";
+import Button from "react-bootstrap/Button";
 
 export const CaretakerEdit = (props) => {
   console.log(props.caretakerId);
@@ -41,68 +42,74 @@ export const CaretakerEdit = (props) => {
 
   return (
     <>
-      <div>
-        <Home />
-      </div>
-      <div className="CaretakerCard">
-        <form onSubmit={editCaretaker} className="col-8 offset-2 text-left">
-          <div className="form-group">
-            <label htmlFor="firstName">
-              <strong>First Name</strong>
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="firstName"
-              ref={firstName}
-              defaultValue={caretaker.user.first_name}
-            />
+      <div className="color_nav">
+        <div>
+          <Home />
+        </div>
+        <div className="CaretakerCard">
+          <form className="col-8 offset-2 text-left">
+            <div className="form-group">
+              <label htmlFor="firstName">
+                <strong>First Name</strong>
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="firstName"
+                ref={firstName}
+                defaultValue={caretaker.user.first_name}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="lastName">
+                <strong>Last Name</strong>
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="lastName"
+                ref={lastName}
+                defaultValue={caretaker.user.last_name}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="title">
+                <strong>Title</strong>
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="title"
+                ref={title}
+                defaultValue={caretaker.title}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="usernamer">
+                <strong>Username</strong>
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="username"
+                ref={username}
+                defaultValue={caretaker.user.username}
+              />
+            </div>
+          </form>
+          <div className="buttonDiv">
+            <Button onClick={editCaretaker} type="submit">
+              Submit
+            </Button>
+            <Button
+              onClick={() => {
+                props.history.push(`/caretakers`);
+              }}
+            >
+              Back
+            </Button>
           </div>
-          <div className="form-group">
-            <label htmlFor="lastName">
-              <strong>Last Name</strong>
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="lastName"
-              ref={lastName}
-              defaultValue={caretaker.user.last_name}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="title">
-              <strong>Title</strong>
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="title"
-              ref={title}
-              defaultValue={caretaker.title}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="usernamer">
-              <strong>Username</strong>
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="username"
-              ref={username}
-              defaultValue={caretaker.user.username}
-            />
-          </div>
-          <button type="submit">Update Profile</button>
-        </form>
-        <button
-          onClick={() => {
-            props.history.push(`/caretakers`);
-          }}
-        >
-          Back to Profile
-        </button>
+        </div>
       </div>
     </>
   );

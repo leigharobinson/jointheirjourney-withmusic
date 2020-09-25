@@ -2,4 +2,12 @@
   border: purple solid 5px;
   padding: 1em;
   margin: 1em;
+  display: flex;
+  justify-self: center;
+  text-align: center;
+}
+
+.bkg_color {
+  padding: 1em 0em 0em 0em;
+  background-color: rgb(165, 181, 232);
 }

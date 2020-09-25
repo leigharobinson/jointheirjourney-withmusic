@@ -10,9 +10,9 @@
   margin: 1em;
 }
 
-/* .PatientBtn {
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
-} */
+.bkg_color {
+  background-color: rgb(165, 181, 232);
+}
 
 .PatientEdit {
   border: green solid 5px;

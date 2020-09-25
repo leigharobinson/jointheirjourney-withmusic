@@ -1,3 +1,11 @@
+.logo_bx img {
+  /* padding: 1em; */
+  margin: 1em 0em 0em 1em;
+}
+.action_btn:hover {
+  border-radius: 50px;
+  box-shadow: 0px 15px 20px rgba(21, 24, 92, 0.4);
+}
 .img_bx {
   background-image: url("../images/nurseandpatient.png");
   background-size: cover;
@@ -17,11 +25,19 @@
 .buttonDiv {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .buttonDiv Button {
-  width: 78px;
   margin: 5px;
+  padding: 0.5em;
+  margin: 0.5em;
+  height: 42px;
+  width: 78px;
   /* text-align: center; */
+}
+.form--register {
+  padding: 1em;
+  margin: 0em 1em 0em 1em;
 }
 .form-control {
   margin-bottom: 0.5em;
@@ -35,8 +51,8 @@ html {
 }
 
 .title {
-  padding: 1em;
-  margin: 1em 0em 0em 0em;
+  padding: 0em 1em 0em 1em;
+  margin: 0em;
 }
 
 /* .Login_bkg {

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Patient.css";
+import Button from "react-bootstrap/Button";
 // import Button from "react-bootstrap/Button";
 
 export const PatientCard = (props) => {

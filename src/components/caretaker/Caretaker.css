@@ -3,3 +3,19 @@
   padding: 1em;
   margin: 1em;
 }
+.bkg_color {
+  background-color: rgb(165, 181, 232);
+}
+.buttonDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buttonDiv Button {
+  margin: 5px;
+  padding: 0.5em;
+  margin: 0.5em;
+  height: 42px;
+  width: 78px;
+  /* text-align: center; */
+}
