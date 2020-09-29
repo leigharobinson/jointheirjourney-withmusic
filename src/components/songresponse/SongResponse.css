@@ -22,3 +22,16 @@
   padding: 0.5em;
   margin: 0.5em;
 }
+
+.unfiltered_card {
+  border: black solid 2px;
+  background-color: rgb(165, 181, 232);
+  padding: 0.5em;
+  margin: 0.5em;
+}
+.filtered_card {
+  border: red solid 2px;
+  background-color: rgb(165, 181, 232);
+  padding: 0.5em;
+  margin: 0.5em;
+}

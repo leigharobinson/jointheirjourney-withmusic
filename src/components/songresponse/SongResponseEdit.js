@@ -83,7 +83,7 @@ export const SongResponseEdit = (props) => {
         (songresponse) => {
           setSongResponse(songresponse);
           //grabing caretaker herd to see what the Api call is giving back
-          console.log(songresponse);
+          // console.log(songresponse);
         }
       );
     }
@@ -103,10 +103,10 @@ export const SongResponseEdit = (props) => {
     };
 
     ApiManager.update("songresponses", updatedSongResponse).then(() => {
-      props.changeFormTrue();
       props.getSongResponses();
-      console.log("edited");
+      // console.log("edited");
     });
+    props.changeFormTrue();
   };
 
   useEffect(() => {
@@ -195,7 +195,9 @@ export const SongResponseEdit = (props) => {
           ))}
         </Form.Control>
         <br />
-        <Form.Label>Vocalization Score</Form.Label>
+        <Form.Label>
+          <strong>Vocalization Score</strong>
+        </Form.Label>
         <Form.Control
           size="sm"
           as="select"

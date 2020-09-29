@@ -6,9 +6,8 @@ import Button from "react-bootstrap/Button";
 import ApiManager from "../../modules/ApiManager";
 import "./SongResponse.css";
 import { SongResponseEdit } from "./SongResponseEdit";
-import { firstLetterCase } from "../Helpers";
 
-export const SongResponseCard = (props) => {
+export const SongResponseCardUnfiltered = (props) => {
   const [show, setShow] = useState(false);
   const [editClicked, setEditClicked] = useState(false);
   const responseId = props.filteredSongResponse.id;
@@ -37,10 +36,8 @@ export const SongResponseCard = (props) => {
         </h4>
         <h5>{props.filteredSongResponse.created_at}</h5>
         <h5>
-          <strong>
-            "{firstLetterCase(props.filteredSongResponse.song_title)}"
-          </strong>{" "}
-          by: {props.filteredSongResponse.artist}
+          <strong>"{props.filteredSongResponse.song.song_title}"</strong> by:{" "}
+          {props.filteredSongResponse.song.artist}
         </h5>
         <div>
           <Button variant="primary" onClick={handleShow}>
@@ -51,13 +48,9 @@ export const SongResponseCard = (props) => {
             <Modal.Header closeButton>
               <Modal.Title>
                 {!editClicked ? (
-                  <div>
-                    <h1>Song Response Details</h1>
-                  </div>
+                  <h1>Song Response Details</h1>
                 ) : (
-                  <div>
-                    <h1>Song Response Edit</h1>
-                  </div>
+                  <h1>Song Response Edit</h1>
                 )}
               </Modal.Title>
             </Modal.Header>
@@ -78,7 +71,7 @@ export const SongResponseCard = (props) => {
                   responseId={responseId}
                   songResponses={props.songResponses}
                   getSongResponses={props.getSongResponses}
-                  patientName={props.patientName}
+                  patientName={props.filteredSongResponse.patient.first_name}
                 />
               )}
             </Modal.Body>

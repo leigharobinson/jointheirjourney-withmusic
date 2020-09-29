@@ -72,7 +72,7 @@ const PatientDetail = (props) => {
     if (isAuthenticated()) {
       ApiManager.getSongResponsesById(props.patientId).then((response) => {
         response.forEach((songResponse) => {
-          console.log(songResponse);
+          // console.log(songResponse);
           songResponse.total =
             songResponse.eye_contact_id +
             songResponse.talkativeness_id +
@@ -85,7 +85,6 @@ const PatientDetail = (props) => {
       });
     }
   };
-  console.log(songResponses);
 
   const getPatient = () => {
     if (isAuthenticated()) {

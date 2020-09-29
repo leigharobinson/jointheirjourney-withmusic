@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { firstLetterCase } from "../Helpers";
-// import { Link } from "react-router-dom";
+import "./SongResponse.css";
+import { SongResponseCard } from "./SongResponseCard";
+import { SongResponseCardUnfiltered } from "./SongResponseCardUnfiltered";
 
 const SongResponseSearch = (props) => {
   const [filteredDisplay, setFilteredDisplay] = useState([]);
 
-  // Added this useEffect call to set filteredDisplay to props.patients when the component mounts, instead of setting it in the useState method argument.
+  // Added this useEffect call to set filteredDisplay to props.songResponses when the component mounts, instead of setting it in the useState method argument.
   useEffect(() => setFilteredDisplay(props.songResponses), [
     props.songResponses,
   ]);
+
+  // Here I'm trying to state to True so that I can see it is True and return something different on Song
+  // Response DetailsDetails
 
   //handleChange runs each time there's a change in the input feild
   const handleChange = (e) => {
@@ -21,7 +25,7 @@ const SongResponseSearch = (props) => {
         created_at: filteredSongResponse.created_at,
         song_title: filteredSongResponse.song.song_title.toLowerCase(),
         artist: filteredSongResponse.song.artist,
-        totalScore: filteredSongResponse.total,
+        total: filteredSongResponse.total,
       };
     });
 
@@ -29,11 +33,6 @@ const SongResponseSearch = (props) => {
     //esle if it's empty, setFilterDisplay to the original list prop
     if (e !== "") {
       let newList = [];
-      // let word = firstLetterCase(e);
-      console.log("did we enter if?");
-      console.log(e.toLowerCase());
-      console.log(firstLetterCase(e));
-      //setCard keeps track of any changes in the input
 
       //newList is an array that holds the filteredCards that meet the search criteria.
 
@@ -44,10 +43,9 @@ const SongResponseSearch = (props) => {
         filteredSongResponse.song_title.includes(e.toLowerCase())
       );
       setFilteredDisplay(newList);
-      console.log("New List", newList);
     } else {
       // if the input isn't modified, return the orginal list.
-      console.log("did we enter else?");
+
       setFilteredDisplay(props.songResponses);
     }
   };
@@ -65,22 +63,27 @@ const SongResponseSearch = (props) => {
           />
         </div>
         {filteredDisplay.map((filteredSongResponse, i) => (
-          <div className="" key={i}>
+          <div key={i}>
             {!filteredSongResponse.song_title ? (
-              <div>
-                <h5>{filteredSongResponse.created_at}</h5>
-                <h4 className="">
-                  {filteredSongResponse.song.song_title}{" "}
-                  {filteredSongResponse.total}/30
-                </h4>
+              <div className="unfiltered_card">
+                <SongResponseCardUnfiltered
+                  getSongResponses={props.getSongResponses}
+                  songResponses={props.songResponses}
+                  key={`filteredSongResponse-${filteredSongResponse.id}`}
+                  filteredSongResponse={filteredSongResponse}
+                  {...props}
+                />
               </div>
             ) : (
-              <div>
-                <h5>{filteredSongResponse.created_at}</h5>
-                <h4 className="">
-                  {firstLetterCase(filteredSongResponse.song_title)}{" "}
-                  {filteredSongResponse.totalScore}/30
-                </h4>
+              <div className="filtered_card">
+                <SongResponseCard
+                  getSongResponses={props.getSongResponses}
+                  key={`filteredSongResponse-${filteredSongResponse.id}`}
+                  filteredSongResponse={filteredSongResponse}
+                  songResponses={props.songResponses}
+                  patientName={props.patientName}
+                  {...props}
+                />
               </div>
             )}
           </div>
