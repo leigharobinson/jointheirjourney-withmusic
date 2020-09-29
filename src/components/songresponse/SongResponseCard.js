@@ -32,16 +32,16 @@ export const SongResponseCard = (props) => {
   return (
     <>
       <div className="songResponseCard">
+        <h5>{props.filteredSongResponse.created_at}</h5>
         <h4>
           <strong>Score: {props.filteredSongResponse.total}/30</strong>
         </h4>
-        <h5>{props.filteredSongResponse.created_at}</h5>
         <h5>
           <strong>
             "{firstLetterCase(props.filteredSongResponse.song_title)}"
           </strong>{" "}
-          by: {props.filteredSongResponse.artist}
         </h5>
+        <h5>{props.filteredSongResponse.artist}</h5>
         <div>
           <Button variant="primary" onClick={handleShow}>
             Details
