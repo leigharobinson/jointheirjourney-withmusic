@@ -11,25 +11,7 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 export const SongResponseCard = (props) => {
   const [show, setShow] = useState(false);
   const [editClicked, setEditClicked] = useState(false);
-  // const dateCreated = props.response.created_at;
-  // const songTitle = props.song_title;
-  // const artist = props.response.artist;
   const responseId = props.response.id;
-
-  const eye_contact_score = parseInt(props.response.eye_contact_id);
-  const talkativeness_score = parseInt(props.response.talkativeness_id);
-  const mood_score = parseInt(props.response.mood_id);
-  const movement_score = parseInt(props.response.movement_id);
-  const vocalization_score = parseInt(props.response.vocalization_id);
-  const liked_song_score = parseInt(props.response.liked_song_id);
-
-  const totalScore =
-    eye_contact_score +
-    talkativeness_score +
-    mood_score +
-    movement_score +
-    vocalization_score +
-    liked_song_score;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -53,7 +35,7 @@ export const SongResponseCard = (props) => {
     <>
       <div className="songResponseCard">
         <h4>
-          <strong>Score: {totalScore}/30</strong>
+          <strong>Score: {props.response.total}/30</strong>
         </h4>
         <h5>{props.response.created_at}</h5>
         <h5>
@@ -79,7 +61,7 @@ export const SongResponseCard = (props) => {
               {!editClicked ? (
                 <SongResponseDetail
                   {...props}
-                  totalScore={totalScore}
+                  totalScore={props.response.total}
                   responseId={responseId}
                   // THis is an experiment if I can get set up a different display
                   // of information in modal if
