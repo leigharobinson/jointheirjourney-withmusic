@@ -7,13 +7,13 @@ const SearchCard = (props) => {
   //card will keep track of any change to the input in the filter box
   const [word, setWord] = useState("");
   //filsterdispay will display the updated list based onthe search
-  //its default state is our cards list prop <-- Joe changed this. See the useEffect below
+  //its default state is our patient's list prop See the useEffect below
   const [filteredDisplay, setFilteredDisplay] = useState([]);
 
-  // Added this useEffect call to set filteredDisplay to props.allCards when the component mounts, instead of setting it in the useState method argument.
+  // Added this useEffect call to set filteredDisplay to props.patients when the component mounts, instead of setting it in the useState method argument.
   useEffect(() => setFilteredDisplay(props.patients), [props.patients]);
 
-  //handleChange runs each time ther's a change in the input feild
+  //handleChange runs each time there's a change in the input feild
   const handleChange = (e) => {
     // we hold the original list in a new array and convert all the names to lowercase
     // we do this to take away chance of user input error
@@ -40,7 +40,7 @@ const SearchCard = (props) => {
       );
       setFilteredDisplay(newList);
     } else {
-      // if the input isn't modified, return the roginal list.
+      // if the input isn't modified, return the orginal list.
       setFilteredDisplay(props.patients);
     }
   };

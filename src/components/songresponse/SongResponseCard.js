@@ -11,7 +11,6 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 export const SongResponseCard = (props) => {
   const [show, setShow] = useState(false);
   const [editClicked, setEditClicked] = useState(false);
-
   // const dateCreated = props.response.created_at;
   // const songTitle = props.song_title;
   // const artist = props.response.artist;
