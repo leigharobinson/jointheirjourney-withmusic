@@ -26,28 +26,28 @@ const PatientList = (props) => {
 
   return (
     <>
+      <div>
+        <Home />
+      </div>
       <div className="bkg_color">
-        <div>
-          <Home />
-        </div>
-        <div>
-          <SearchCard patients={patients} {...props} />
-        </div>
         <div className="PatientList">
           <div className="CreateNew_btn">
             <Link to={`/patients/form`}>
               <Button color="success">Create New patient</Button>{" "}
             </Link>
           </div>
-          <div className="Title_position">
-            <h3>Patient List</h3>
+          <div className="patientList">
+            <SearchCard patients={patients} {...props} />
           </div>
-
+          {/* <div className="Title_position">
+            <h3>Patient List</h3>
+          </div> */}
+          {/* 
           <div className="patientList">
             {patients.map((patient) => (
               <PatientCard key={`patient-${patient.id}`} patient={patient} />
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </>

@@ -117,9 +117,9 @@ const PatientDetail = (props) => {
 
   return (
     <>
+      <Home />
       <div className="bkg_color">
         <div id="Patient">
-          <Home />
           <div className="PatientCard">
             <h3>
               Patient: {patient.first_name} {patient.last_name}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-// import { Button } from "reactstrap";
 import { firstLetterCase } from "../Helpers";
-// import "./SearchCard.css";
+import { Link } from "react-router-dom";
+import "./Patient.css";
 
 const SearchCard = (props) => {
   //card will keep track of any change to the input in the filter box
@@ -18,15 +18,11 @@ const SearchCard = (props) => {
     // we hold the original list in a new array and convert all the names to lowercase
     // we do this to take away chance of user input error
     // Then we return Old List as an arry of objects to hold this changed list
-    let oldList = props.patients.map((filteredPatien) => {
+    let oldList = props.patients.map((filteredPatient) => {
       return {
-        id: filteredPatien.id,
-        first_name: filteredPatien.first_name.toLowerCase(),
-        // cardType: filteredPatient.cardType,
-        // expirationDate: filteredPatient.expirationDate,
-        // amount: filteredPatient.amount,
-        // discount: filteredPatient.discount,
-        // visitsUntilReward: filteredPatient.visitsUntilReward,
+        id: filteredPatient.id,
+        first_name: filteredPatient.first_name.toLowerCase(),
+        last_name: filteredPatient.last_name.toLowerCase(),
       };
     });
     // if the input bar is not empty, run the following
@@ -52,21 +48,27 @@ const SearchCard = (props) => {
     <>
       <div>
         <div id="search_border">
-          <h4 className="colorLetters">Patient Library:</h4>
+          <h4 className="">Patient List:</h4>
           <input
             id="search_bar"
             placeholder="Search"
             onChange={(e) => handleChange(e.target.value)}
           />
         </div>
-        {filteredDisplay.map((filteredPatient) => (
-          <h3 className="colorLetters">
-            <span className="card-for">
-              {firstLetterCase(filteredPatient.first_name)}
-            </span>
-          </h3>
+        {filteredDisplay.map((filteredPatient, i) => (
+          <div className="PatientCard" key={i}>
+            <div className="patientCard-content">
+              <Link to={`/patients/${filteredPatient.id}`}>
+                <h4 className="">
+                  <div className="patient_bx action_btn">
+                    {firstLetterCase(filteredPatient.first_name)}{" "}
+                    {firstLetterCase(filteredPatient.last_name)}
+                  </div>
+                </h4>
+              </Link>
+            </div>
+          </div>
         ))}
-        ;
       </div>
     </>
   );
