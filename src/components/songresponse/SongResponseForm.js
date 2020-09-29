@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import ApiManager from "../../modules/ApiManager";
+import Form from "react-bootstrap/Form";
 
 const SongResponseForm = (props) => {
   const { isAuthenticated } = useSimpleAuth();
@@ -117,84 +118,130 @@ const SongResponseForm = (props) => {
 
   return (
     <>
-      <h2>"{songName}"</h2>
-      <h3>{songArtist}</h3>
-      <div className="SongResponseForm">
-        <form>
-          <fieldset>
-            <div>
-              <select ref={mood} id="mood">
-                <option value="">Mood Category</option>
-                {moodVals.map((mood) => (
-                  <option key={mood.id} value={mood.id}>
-                    {mood.id}. {mood.description}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <select ref={eye_contact} id="eye_contact">
-                <option value="">Eye Contact Category</option>
-                {eyecontactVals.map((eye_contact) => (
-                  <option key={eye_contact.id} value={eye_contact.id}>
-                    {eye_contact.id}. {eye_contact.description}
-                  </option>
-                ))}
-              </select>
-              <select ref={talkativeness} id="talkativeness">
-                <option value="">Talkativeness Category</option>
-                {talkativenessVals.map((talkativeness) => (
-                  <option key={talkativeness.id} value={talkativeness.id}>
-                    {talkativeness.id}. {talkativeness.description}
-                  </option>
-                ))}
-              </select>
-              <select ref={vocalization} id="vocalization">
-                <option value="">Vocalization Category</option>
-                {vocalizationVals.map((vocalization) => (
-                  <option key={vocalization.id} value={vocalization.id}>
-                    {vocalization.id}. {vocalization.description}
-                  </option>
-                ))}
-              </select>
-              <select ref={movement} id="movement">
-                <option value="">Movement Category</option>
-                {movementVals.map((movement) => (
-                  <option key={movement.id} value={movement.id}>
-                    {movement.id}. {movement.description}
-                  </option>
-                ))}
-              </select>
-              <select ref={liked_song} id="liked_song">
-                <option value="">
-                  Did {props.patientName} like this song?
-                </option>
-                {likedSongVals.map((liked_song) => (
-                  <option key={liked_song.id} value={liked_song.id}>
-                    {liked_song.id}. {liked_song.description}
-                  </option>
-                ))}
-              </select>
-
-              <input
-                ref={notes}
-                type="text"
-                name="notes"
-                className="form-control"
-                placeholder="Add Notes Here"
-                required
-                autoFocus
-              />
-              <label htmlFor="notes"></label>
-            </div>
-            <div className="alignRight">
-              <button type="button" onClick={constructNewSongResponse}>
-                Submit
-              </button>
-            </div>
-          </fieldset>
-        </form>
-      </div>
+      <h5>"{songName}"</h5>
+      <h6>{songArtist}</h6>
+      <Form.Group>
+        <br />
+        <Form.Label>
+          <strong>Eye Contact:</strong>
+        </Form.Label>
+        <Form.Control
+          size="sm"
+          as="select"
+          type="select"
+          name="eye_contact"
+          id="eye_contact"
+          ref={eye_contact}
+        >
+          {eyecontactVals.map((eye_contact) => (
+            <option key={eye_contact.id} value={eye_contact.id}>
+              {eye_contact.id}. {eye_contact.description}
+            </option>
+          ))}
+        </Form.Control>
+        <Form.Label>
+          <strong>Talkativeness:</strong>
+        </Form.Label>
+        <Form.Control
+          size="sm"
+          as="select"
+          type="select"
+          name="talkativeness"
+          id="talkativeness"
+          ref={talkativeness}
+        >
+          {talkativenessVals.map((talkativeness) => (
+            <option key={talkativeness.id} value={talkativeness.id}>
+              {talkativeness.id}. {talkativeness.description}
+            </option>
+          ))}
+        </Form.Control>
+        <Form.Label>
+          <strong>Vocalization:</strong>
+        </Form.Label>
+        <Form.Control
+          size="sm"
+          as="select"
+          type="select"
+          name="vocalization"
+          id="vocalization"
+          ref={vocalization}
+        >
+          {vocalizationVals.map((vocalization) => (
+            <option key={vocalization.id} value={vocalization.id}>
+              {vocalization.id}. {vocalization.description}
+            </option>
+          ))}
+        </Form.Control>
+        <Form.Label>
+          <strong>Mood:</strong>
+        </Form.Label>
+        <Form.Control
+          size="sm"
+          as="select"
+          type="select"
+          name="mood"
+          id="mood"
+          ref={mood}
+        >
+          {moodVals.map((mood) => (
+            <option key={mood.id} value={mood.id}>
+              {mood.id}. {mood.description}
+            </option>
+          ))}
+        </Form.Control>
+        <Form.Label>
+          <strong>Movement:</strong>
+        </Form.Label>
+        <Form.Control
+          size="sm"
+          as="select"
+          type="select"
+          name="movement"
+          id="movement"
+          ref={movement}
+        >
+          {movementVals.map((movement) => (
+            <option key={movement.id} value={movement.id}>
+              {movement.id}. {movement.description}
+            </option>
+          ))}
+        </Form.Control>
+        <Form.Label>
+          <strong>Did {props.patientName} like this song?</strong>
+        </Form.Label>
+        <Form.Control
+          size="sm"
+          as="select"
+          type="select"
+          name="liked_song"
+          id="liked_song"
+          ref={liked_song}
+        >
+          {likedSongVals.map((liked_song) => (
+            <option key={liked_song.id} value={liked_song.id}>
+              {liked_song.id}. {liked_song.description}
+            </option>
+          ))}
+        </Form.Control>
+        <Form.Label>
+          <strong>Notes:</strong>
+        </Form.Label>
+        <Form.Control
+          size="sm"
+          placeholder="Add Notes Here"
+          required
+          autoFocus
+          type="text"
+          ref={notes}
+          id="notes"
+        />
+        <div className="alignRight">
+          <button type="button" onClick={constructNewSongResponse}>
+            Submit
+          </button>
+        </div>
+      </Form.Group>
     </>
   );
 };
