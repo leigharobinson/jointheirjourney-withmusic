@@ -34,15 +34,11 @@ const CaretakerList = (props) => {
           <Home />
         </div>
         <div className="CaretakerCard">
-          <div>
-            <div>
-              <h3>
-                Name: {caretaker.user.first_name} {caretaker.user.last_name}{" "}
-              </h3>
-            </div>
-            <h5>Title: {caretaker.title}</h5>
-            <h5>Username: {caretaker.user.username}</h5>
-          </div>
+          <h3>
+            Name: {caretaker.user.first_name} {caretaker.user.last_name}{" "}
+          </h3>
+          <h5>Title: {caretaker.title}</h5>
+          <h5>Username: {caretaker.user.username}</h5>
 
           <Button
             onClick={() => {

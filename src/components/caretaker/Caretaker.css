@@ -2,6 +2,9 @@
   border: blue solid 5px;
   padding: 1em;
   margin: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .bkg_color {
   background-color: rgb(165, 181, 232);

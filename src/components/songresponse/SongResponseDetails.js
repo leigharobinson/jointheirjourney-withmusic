@@ -25,7 +25,7 @@ export const SongResponseDetail = (props) => {
         (songresponse) => {
           setSongResponse(songresponse);
           //grabing caretaker herd to see what the Api call is giving back
-          console.log(songresponse);
+          // console.log(songresponse);
         }
       );
     }
@@ -41,62 +41,62 @@ export const SongResponseDetail = (props) => {
         {/* <h4>{songresponse.id}</h4> */}
         <h4>{songresponse.created_at}</h4>
         <h5>
-          <strong>"{songresponse.song.song_title}"</strong> by:
-          {songresponse.song.artist}
-          <hr />
-          <div className="Parent">
-            <p>
-              <strong>Eye Contact:</strong>
-              {songresponse.eye_contact.description}
-            </p>
-            <p>{songresponse.eye_contact_id}/5 </p>
-          </div>
-          <div className="Parent">
-            <p>
-              <strong>Talkativeness:</strong>{" "}
-              {songresponse.talkativeness.description}
-            </p>
-            <p> {songresponse.talkativeness_id}/5</p>
-          </div>
-          <div className="Parent">
-            <p>
-              <strong>Mood:</strong> {songresponse.mood.description}
-            </p>
-            <p>{songresponse.mood_id}/5</p>
-          </div>
-          <div className="Parent">
-            <p>
-              <strong>Movement:</strong> {songresponse.movement.description}
-            </p>
-            <p>{songresponse.movement_id}/5</p>
-          </div>
-          <div className="Parent">
-            <p>
-              <strong>Vocalization:</strong>{" "}
-              {songresponse.vocalization.description}
-            </p>
-            <p>{songresponse.vocalization_id}/5</p>
-          </div>
-          <div className="Parent">
-            <p>
-              <strong>Liked Song:</strong> {songresponse.liked_song.description}
-            </p>
-            <p>{songresponse.liked_song_id}/5</p>
-          </div>
-          <div className="Parent">
-            <p>
-              <strong>Notes:</strong> {songresponse.notes}
-            </p>
-          </div>
-          <div className="Parent">
-            <h4>
-              <strong> Score:</strong>
-            </h4>
-            <h4>
-              <strong>{props.totalScore}/30</strong>
-            </h4>
-          </div>
+          <strong>"{songresponse.song.song_title}"</strong>{" "}
         </h5>
+        <h5>by: {songresponse.song.artist}</h5>
+        <hr />
+        <div className="Parent">
+          <p>
+            <strong>Eye Contact:</strong>
+            {songresponse.eye_contact.description}
+          </p>
+          <p>{songresponse.eye_contact_id}/5 </p>
+        </div>
+        <div className="Parent">
+          <p>
+            <strong>Talkativeness:</strong>{" "}
+            {songresponse.talkativeness.description}
+          </p>
+          <p> {songresponse.talkativeness_id}/5</p>
+        </div>
+        <div className="Parent">
+          <p>
+            <strong>Mood:</strong> {songresponse.mood.description}
+          </p>
+          <p>{songresponse.mood_id}/5</p>
+        </div>
+        <div className="Parent">
+          <p>
+            <strong>Movement:</strong> {songresponse.movement.description}
+          </p>
+          <p>{songresponse.movement_id}/5</p>
+        </div>
+        <div className="Parent">
+          <p>
+            <strong>Vocalization:</strong>{" "}
+            {songresponse.vocalization.description}
+          </p>
+          <p>{songresponse.vocalization_id}/5</p>
+        </div>
+        <div className="Parent">
+          <p>
+            <strong>Liked Song:</strong> {songresponse.liked_song.description}
+          </p>
+          <p>{songresponse.liked_song_id}/5</p>
+        </div>
+        <div className="Parent">
+          <p>
+            <strong>Notes:</strong> {songresponse.notes}
+          </p>
+        </div>
+        <div className="Parent">
+          <h4>
+            <strong> Score:</strong>
+          </h4>
+          <h4>
+            <strong>{props.totalScore}/30</strong>
+          </h4>
+        </div>
       </div>
     </>
   );

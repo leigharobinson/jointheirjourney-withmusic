@@ -71,8 +71,17 @@ const PatientDetail = (props) => {
   const getSongResponses = () => {
     if (isAuthenticated()) {
       ApiManager.getSongResponsesById(props.patientId).then((response) => {
+        response.forEach((songResponse) => {
+          // console.log(songResponse);
+          songResponse.total =
+            songResponse.eye_contact_id +
+            songResponse.talkativeness_id +
+            songResponse.mood_id +
+            songResponse.movement_id +
+            songResponse.vocalization_id +
+            songResponse.liked_song_id;
+        });
         setSongResponses(response);
-        // console.log(response);
       });
     }
   };
@@ -117,9 +126,9 @@ const PatientDetail = (props) => {
 
   return (
     <>
+      <Home />
       <div className="bkg_color">
         <div id="Patient">
-          <Home />
           <div className="PatientCard">
             <h3>
               Patient: {patient.first_name} {patient.last_name}

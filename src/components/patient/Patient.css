@@ -1,7 +1,12 @@
 .PatientCard {
   /* border: palevioletred solid 5px; */
+  background-color: rgb(249, 250, 253);
   padding: 0.5em;
   margin: 0.5em;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .action_btn:hover {
@@ -14,13 +19,13 @@
   justify-content: center;
   align-items: center;
   background-color: white;
-  width: 18em;
-  height: 6em;
+  /* width: 18em; */
+  height: 2em;
 }
 .PatientList {
   border: blueviolet solid 5px;
-  padding: 1em;
-  margin: 1em;
+  padding: 0em 1em;
+  margin: 0em 1em;
 }
 
 .bkg_color {
@@ -28,6 +33,7 @@
 }
 
 .PatientEdit {
+  background-color: rgb(165, 181, 232);
   border: green solid 5px;
   padding: 1em;
   margin: 1em;
@@ -56,8 +62,8 @@
 .CreateNew_btn {
   display: flex;
   justify-content: flex-end;
-  padding: 0 0.5em;
-  margin: 0 0.5em;
+  padding: 0.5em 0.5em 0em 0.5em;
+  margin: 0.5em 0.5em 0em 0.5em;
 }
 
 .Title_position {
