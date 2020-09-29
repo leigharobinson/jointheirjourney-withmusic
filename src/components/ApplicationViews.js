@@ -46,7 +46,7 @@ const ApplicationViews = () => {
         {/* This is Where Home Starts  */}
         <Route
           exact
-          path="/Home"
+          path="/"
           render={(props) => {
             if (isAuthenticated()) {
               return <Home {...props} />;

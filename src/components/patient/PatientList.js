@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import ApiManager from "../../modules/ApiManager";
 import "./Patient.css";
 import Button from "react-bootstrap/Button";
+import SearchCard from "./SearchCard";
 
 const PatientList = (props) => {
   const [patients, setPatients] = useState([]);
@@ -28,6 +29,9 @@ const PatientList = (props) => {
       <div className="bkg_color">
         <div>
           <Home />
+        </div>
+        <div>
+          <SearchCard patients={patients} {...props} />
         </div>
         <div className="PatientList">
           <div className="CreateNew_btn">
