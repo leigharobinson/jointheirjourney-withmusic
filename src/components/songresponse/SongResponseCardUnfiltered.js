@@ -31,14 +31,14 @@ export const SongResponseCardUnfiltered = (props) => {
   return (
     <>
       <div className="songResponseCard">
+        <h5>{props.filteredSongResponse.created_at}</h5>
         <h4>
           <strong>Score: {props.filteredSongResponse.total}/30</strong>
         </h4>
-        <h5>{props.filteredSongResponse.created_at}</h5>
         <h5>
-          <strong>"{props.filteredSongResponse.song.song_title}"</strong> by:{" "}
-          {props.filteredSongResponse.song.artist}
+          <strong>"{props.filteredSongResponse.song.song_title}"</strong>
         </h5>
+        <h5>{props.filteredSongResponse.song.artist}</h5>
         <div>
           <Button variant="primary" onClick={handleShow}>
             Details

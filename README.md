@@ -1,70 +1,26 @@
-### More specific instructions coming soon!
+# Join Their Journey with Music
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##### A full stack app that helps caregivers interact, connect, and record standardized data on those suffering from dementia.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+I wanted to create an app that would help solve the problem of how caretakers could positively connect with their Dementia patients as well as could measure and record those interactions to show trends over time. Studies have shown finding music that connects with patients improves patient outcome. Join Their Journey with Music leverages that information to helps caregivers select music with meaning for dementia patients and also has the functionality to measures specific aspects of a patient's response to a song to collect data points that can referenced over a patient's journey with dementia.
 
-### `npm start`
+### Getting Started
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> Make sure you have the Django Api up and running before launching the Front-End.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Closing Thoughts
 
-### `npm test`
+With music becoming much more easily accessible through streaming platforms, more than ever music is a low investment with a high return on patient quality of life and caregiver stress levels. Music can be used to entertain, help redirect a patient when they are upset, scared or confused, and has been shown to make a patient more manageable when dealing with daily tasks such as bathing or other personal care interactions. I will continue to improve upon this Prototype with more input and research from professionals working with Dementia patients.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ###Thank You
 
-### `npm run build`
+I wanted to thank all the health professional who took the time to discuss my App with me. I look forward to continuing those relationships and further improving my App.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ###Resources
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+If you'd like to learn more about the research and organizations dedicated to music and dementia here are some links to resources:
+[Music and Memory](https://musicandmemory.org/).
+[Music and Memory/Research](https://musicandmemory.org/music-brain-resources/current-research/).
+[Alive Inside](http://www.aliveinside.us/#land)
